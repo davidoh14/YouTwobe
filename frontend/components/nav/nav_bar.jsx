@@ -46,7 +46,7 @@ const NavBar = ({ currentUser, logout, classes, history }) => {
             <MenuSharpIcon className={classes.navBarButton} />
             <Button className={classes.logo} onClick={() => history.push("/")}>
               <img
-                src={window.YouTubeLogoURL}
+                src={window.YouTubeIconURL}
                 className={classes.youtubeLogo}
               />
               <h1 className={classes.logoText}>YouTwobe</h1>

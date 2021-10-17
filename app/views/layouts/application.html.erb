@@ -15,6 +15,12 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
     />
 
+    <%= favicon_link_tag asset_path('YouTube-Icon.svg')%> 
+
+    <script type="text/javascript">
+      window.YouTubeIconURL = "<%= image_url('YouTube-Icon.svg') %>";
+    </script>
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
