@@ -24,8 +24,8 @@ class VideoShow extends React.Component {
         <div className="show-body">
           <div className="player-and-comments">
             <ReactPlayer
-              width="1296px"
-              height="729px"
+              width="1066px"
+              height="600px"
               url={video.video}
               // url={window.squirrelURL}
               muted={false}
