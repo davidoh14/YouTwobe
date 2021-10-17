@@ -1,17 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import VideoCallOutlinedIcon from "@mui/icons-material/VideoCallOutlined";
 import MenuSharpIcon from "@mui/icons-material/MenuSharp";
-import { AppBar, Toolbar, Typography } from "@mui/material";
+import { AppBar, Toolbar } from "@mui/material";
 import { Button } from "@mui/material";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
-import SearchIcon from "@mui/icons-material/Search";
+// import SearchIcon from "@mui/icons-material/Search";
 // import ClearIcon from '@mui/icons-material/Clear';
 // import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
 // import AppsIcon from '@mui/icons-material/Apps';
 // import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import InputBase from "@mui/material/InputBase";
+// import InputBase from "@mui/material/InputBase";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
@@ -31,7 +30,6 @@ const NavBar = ({ currentUser, logout, classes, history }) => {
       >
         <PersonOutlineIcon />
         Login
-        {/* <Button className={classes.loginButtonText}>Login</Button> */}
       </Button>
     </div>
   );
