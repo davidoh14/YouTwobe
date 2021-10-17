@@ -1,7 +1,7 @@
 import React from "react";
 // import VideoCallOutlinedIcon from "@mui/icons-material/VideoCallOutlined";
 // import MenuSharpIcon from "@mui/icons-material/MenuSharp";
-// import { AppBar, Toolbar } from "@mui/material";
+import { AppBar, Toolbar } from "@mui/material";
 // import { Button } from "@mui/material";
 // import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 // import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -106,6 +106,9 @@ const NavBar = ({ currentUser, logout, classes, history }) => {
   return(
       <div>
         NavBar
+        <AppBar>
+            <Toolbar></Toolbar>
+        </AppBar>
                 
         {display}
     </div>
