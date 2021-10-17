@@ -1,0 +1,36 @@
+// Place all the styles related to the StaticPages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+    display: flex;
+    // flex-direction: row;
+    justify-content: center;
+    // align-items: center;
+    height: 100vh;
+    width: 100%;
+    /* color:#ffffff; */
+    background-color: #181818;
+    /* background-color: white */
+    font-family: Roboto;
+    color: white;
+    overflow-x: hidden;
+}
+
+.toolbar-pad {
+    min-height: 64px;
+}
+
+a {
+    color: white;
+}
+
+button, input[type="submit"], input[type="reset"] {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}

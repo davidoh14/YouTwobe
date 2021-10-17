@@ -1,0 +1,25 @@
+.video-upload-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 200px;
+    color: black;
+    padding: 50px;
+    background-color: rgb(221, 221, 221);
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.upload-title, .upload-description{
+    padding: 10px;
+}
+
+.upload-thumbnail{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
