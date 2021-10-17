@@ -12,14 +12,14 @@ import Home from "./home";
 const App = () => (
   <div>
     <header>
-      <Switch>
+      {/* <Switch> */}
         {/* <ProtectedRoute path='/upload/' component={VideoUploadFormContainer}/>
         <Route path='/watch/:videoId' component={VideoShowContainer}/>
         <AuthRoute path="/login" component={login_form_container} />
         <AuthRoute path="/signup" component={signup_form_container} /> */}
         <Route exact path='/' component={Home} />
         {/* <Route component={PageNotFound} /> */}
-      </Switch>
+      {/* </Switch> */}
     </header>
   </div>
 );
