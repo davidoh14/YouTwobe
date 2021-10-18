@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'open-uri'
 
+Comment.destroy_all
 Video.destroy_all
 User.destroy_all
-Comment.destroy_all
 
 user1 = User.create({username:"Ian",password:"test",email:"ian@email.com",first_name:"Ian", last_name:"McGrath"})
 user2 = User.create({username:"Vincent",password:"test",email:"vincent@email.com",first_name:"Vincent", last_name:"Hsu"})
