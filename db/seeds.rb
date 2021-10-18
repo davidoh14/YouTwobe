@@ -21,89 +21,150 @@ user7 = User.create({username:"Yuhuan",password:"test",email:"Yuhuan@email.com",
 user8 = User.create({username:"ProZD", password:"test",email:"ProZD@email.com", first_name: "Pro", last_name: "ZD"})
 user9 = User.create({username:"Justin Kuritzkes", password: "test", email:"justin@email.com", first_name:"justin", last_name:"Kuritzkes"})
 
-vid1 = Video.new({
+vid1 = Video.create({
     title: "Squirrel jumps on UPS delivery man", 
     description: "Ring.com shared an unexpected cute moment when a squirrel jumped onto the back of a UPS driver as he made a delivery.",
     uploader_id: user2.id,
     view_count: 0})
+    
+vid1.thumbnail.attach(io: File.open('app/assets/thumbnails/squirrel_thumbnail.png'), filename: 'squirrel_thumbnail.png')
+vid1.video.attach(io: File.open('app/assets/videos/squirrel240.mp4'), filename: 'squirrel240.mp4')
 
-squirrelP = open('https://youtwobe-seeds.s3.us-east-2.amazonaws.com/squirrel_thumbnail.png')
-vid1.thumbnail.attach(io: squirrelP, filename: 'squirrel_thumbnail.png')
-
-squirrel = open('https://youtwobe-seeds.s3.us-east-2.amazonaws.com/squirrel240.mp4')
-vid1.video.attach(io: squirrel, filename: 'squirrel240.mp4')
-
-vid1.save
-
-vid2 = Video.new({
+    
+vid2 = Video.create({
     title: "people in LA every time it rains", 
     description: "My Twitter: https://twitter.com/prozdkp",
     uploader_id: user8.id,
     view_count: 0})
     
-rainP = open('https://youtwobe-seeds.s3.us-east-2.amazonaws.com/rainPic.png')
-vid2.thumbnail.attach(io: rainP, filename: 'rainPic.png')
+vid2.thumbnail.attach(io: File.open('app/assets/thumbnails/rainPic.png'), filename: 'rainPic.png')
+vid2.video.attach(io: File.open('app/assets/videos/rain.mp4'), filename: 'rain.mp4')
 
-rain = open('https://youtwobe-seeds.s3.us-east-2.amazonaws.com/rain.mp4')
-vid2.video.attach(io: rain, filename: 'rain.mp4')
-
-vid2.save
-
-vid3 = Video.new({
+vid3 = Video.create({
     title: "Potion Seller", 
     description: "A knight and a man who sells potions.",
     uploader_id: user9.id,
     view_count: 0})
     
-potionP = open('https://youtwobe-seeds.s3.us-east-2.amazonaws.com/potionsellerP.png')
-vid3.thumbnail.attach(io: potionP, filename: 'potionP.png')
+vid3.thumbnail.attach(io: File.open('app/assets/thumbnails/potionsellerP.png'), filename: 'potionsellerP.png')
+vid3.video.attach(io: File.open('app/assets/videos/potionseller.mp4'), filename: 'potionseller.mp4')
 
-potion = open('https://youtwobe-seeds.s3.us-east-2.amazonaws.com/potionseller.mp4')
-vid3.video.attach(io: potion, filename: 'potionseller.mp4')
 
-vid3.save
-
-vid4 = Video.new({
+vid4 = Video.create({
     title: "Lemongrab - Unacceptable!", 
     description: "This...castle...",
     uploader_id: user5.id,
     view_count: 0})
     
-unnacceptableP = open('https://youtwobe-seeds.s3.us-east-2.amazonaws.com/unacceptableP.png')
-vid4.thumbnail.attach(io: unnacceptableP, filename: 'unacceptableP.png')
+vid4.thumbnail.attach(io: File.open('app/assets/thumbnails/unacceptableP.png'), filename: 'unacceptableP.png')
+vid4.video.attach(io: File.open('app/assets/videos/unacceptable.mp4'), filename: 'unacceptable.mp4')
 
-unacceptable = open('https://youtwobe-seeds.s3.us-east-2.amazonaws.com/unacceptable.mp4')
-vid4.video.attach(io: unacceptable, filename: 'unacceptable.mp4')
 
-vid4.save
-
-vid5 = Video.new({
+vid5 = Video.create({
     title: "Deadliest Self-defense move", 
     description: "What move has been banned in all MMA tournaments?",
     uploader_id: user6.id,
     view_count: 0})
     
-selfdefenseP = open('https://youtwobe-seeds.s3.us-east-2.amazonaws.com/selfdefenseP.png')
-vid5.thumbnail.attach(io: selfdefenseP, filename: 'selfdefenseP.png')
+vid5.thumbnail.attach(io: File.open('app/assets/thumbnails/selfdefenseP.png'), filename: 'selfdefenseP.png')
+vid5.video.attach(io: File.open('app/assets/videos/selfdefense.mp4'), filename: 'selfdefense.mp4')
 
-selfdefense = open('https://youtwobe-seeds.s3.us-east-2.amazonaws.com/selfdefense.mp4')
-vid5.video.attach(io: selfdefense, filename: 'selfdefense.mp4')
 
-vid5.save
-
-vid6 = Video.new({
+vid6 = Video.create({
     title: "Spidey-suit", 
     description: "Uncle Ben?",
     uploader_id: user3.id,
     view_count: 0})
     
-spidermanP = open('https://youtwobe-seeds.s3.us-east-2.amazonaws.com/spidermanP.png')
-vid6.thumbnail.attach(io: spidermanP, filename: 'spidermanP.png')
+vid6.thumbnail.attach(io: File.open('app/assets/thumbnails/spidermanP.png'), filename: 'spidermanP.png')
+vid6.video.attach(io: File.open('app/assets/videos/spiderman.mp4'), filename: 'spiderman.mp4')
 
-spiderman = open('https://youtwobe-seeds.s3.us-east-2.amazonaws.com/spiderman.mp4')
-vid6.video.attach(io: spiderman, filename: 'spiderman.mp4')
 
-vid6.save
+# vid1 = Video.new({
+#     title: "Squirrel jumps on UPS delivery man", 
+#     description: "Ring.com shared an unexpected cute moment when a squirrel jumped onto the back of a UPS driver as he made a delivery.",
+#     uploader_id: user2.id,
+#     view_count: 0})
+    
+#     squirrelP = open('https://youtwobe2-seeds.s3.us-east-2.amazonaws.com/squirrel_thumbnail.png')
+#     vid1.thumbnail.attach(io: squirrelP, filename: 'squirrel_thumbnail.png')
+    
+#     squirrel = open('https://youtwobe2-seeds.s3.us-east-2.amazonaws.com/squirrel240.mp4')
+#     vid1.video.attach(io: squirrel, filename: 'squirrel240.mp4')
+    
+#     vid1.save
+
+# vid2 = Video.new({
+#     title: "people in LA every time it rains", 
+#     description: "My Twitter: https://twitter.com/prozdkp",
+#     uploader_id: user8.id,
+#     view_count: 0})
+    
+# rainP = open('https://youtwobe2-seeds.s3.us-east-2.amazonaws.com/rainPic.png')
+# vid2.thumbnail.attach(io: rainP, filename: 'rainPic.png')
+
+# rain = open('https://youtwobe2-seeds.s3.us-east-2.amazonaws.com/rain.mp4')
+# vid2.video.attach(io: rain, filename: 'rain.mp4')
+
+# vid2.save
+
+# vid3 = Video.new({
+#     title: "Potion Seller", 
+#     description: "A knight and a man who sells potions.",
+#     uploader_id: user9.id,
+#     view_count: 0})
+    
+# potionP = open('https://youtwobe2-seeds.s3.us-east-2.amazonaws.com/potionsellerP.png')
+# vid3.thumbnail.attach(io: potionP, filename: 'potionP.png')
+
+# potion = open('https://youtwobe2-seeds.s3.us-east-2.amazonaws.com/potionseller.mp4')
+# vid3.video.attach(io: potion, filename: 'potionseller.mp4')
+
+# vid3.save
+
+# vid4 = Video.new({
+#     title: "Lemongrab - Unacceptable!", 
+#     description: "This...castle...",
+#     uploader_id: user5.id,
+#     view_count: 0})
+    
+# unnacceptableP = open('https://youtwobe2-seeds.s3.us-east-2.amazonaws.com/unacceptableP.png')
+# vid4.thumbnail.attach(io: unnacceptableP, filename: 'unacceptableP.png')
+
+# unacceptable = open('https://youtwobe2-seeds.s3.us-east-2.amazonaws.com/unacceptable.mp4')
+# vid4.video.attach(io: unacceptable, filename: 'unacceptable.mp4')
+
+
+
+# vid4.save
+
+# vid5 = Video.new({
+#     title: "Deadliest Self-defense move", 
+#     description: "What move has been banned in all MMA tournaments?",
+#     uploader_id: user6.id,
+#     view_count: 0})
+    
+# selfdefenseP = open('https://youtwobe2-seeds.s3.us-east-2.amazonaws.com/selfdefenseP.png')
+# vid5.thumbnail.attach(io: selfdefenseP, filename: 'selfdefenseP.png')
+
+# selfdefense = open('https://youtwobe2-seeds.s3.us-east-2.amazonaws.com/selfdefense.mp4')
+# vid5.video.attach(io: selfdefense, filename: 'selfdefense.mp4')
+
+# vid5.save
+
+# vid6 = Video.new({
+#     title: "Spidey-suit", 
+#     description: "Uncle Ben?",
+#     uploader_id: user3.id,
+#     view_count: 0})
+    
+# spidermanP = open('https://youtwobe2-seeds.s3.us-east-2.amazonaws.com/spidermanP.png')
+# vid6.thumbnail.attach(io: spidermanP, filename: 'spidermanP.png')
+
+# spiderman = open('https://youtwobe2-seeds.s3.us-east-2.amazonaws.com/spiderman.mp4')
+# vid6.video.attach(io: spiderman, filename: 'spiderman.mp4')
+
+# vid6.save
 
 
 com1 = Comment.create!({body: "much wao", commenter_id: user1.id, video_id: vid5.id})
