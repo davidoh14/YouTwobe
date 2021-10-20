@@ -37,11 +37,14 @@ export const signup = (formUser) => (dispatch) =>
     (errors) => dispatch(receiveErrors(errors.responseJSON))
   );
 
-export const login = (formUser) => (dispatch) =>
-  postSession(formUser).then(
+export const login = (formUser) => (dispatch) => {
+  return postSession(formUser).then(
     (user) => dispatch(receiveUser(user)),
-    (errors) => dispatch(receiveErrors(errors.responseJSON))
-  );
+    (errors) => { 
+      debugger
+      return dispatch(receiveErrors(errors.responseJSON)) }
+  )
+}
 
 export const logout = () => (dispatch) =>
   deleteSession().then(

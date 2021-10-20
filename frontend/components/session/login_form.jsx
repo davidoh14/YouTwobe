@@ -81,34 +81,24 @@ class LoginForm extends React.Component {
               /> */}
 
             <div className="login-buttons">
-              <Button
-                variant="contained"
-                className="login-Button"
-                onClick={this.handleSubmit}
-              >
-                Login
-              </Button>
-              <Button
-                variant="contained"
-                className="demo-Button"
-                onClick={this.demoLogin}
-              >
-                Guest Login
-              </Button>
+              <Button variant="contained" className="login-Button" onClick={this.handleSubmit}>Login</Button>
+              <Button variant="contained" className="demo-Button" onClick={this.demoLogin}>Guest Login</Button>
             </div>
             <Button
               sx={{
                 color: "black",
               }}
               className="signup-instead"
-              onClick={() => this.props.history.push("/signup")}
-            >
-              Sign up instead
-            </Button>
+              onClick={() => this.props.history.push("/signup")}>Sign up instead</Button>
             <ul>
-              {this.props.errors.map((error, i) => (
-                <li key={i}>{error}</li>
-              ))}
+              {
+
+              this.props.errors.length ?
+                this.props.errors.map((error, i) => (
+                  <li key={i}>{error}</li>
+                )) : null
+              
+              }
             </ul>
           </form>
         </div>
