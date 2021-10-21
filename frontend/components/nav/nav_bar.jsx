@@ -7,12 +7,7 @@ import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import SearchIcon from "@mui/icons-material/Search";
-import InputBase from "@mui/material/InputBase";
-// import ClearIcon from '@mui/icons-material/Clear';
-// import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
-// import AppsIcon from '@mui/icons-material/Apps';
-// import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+
 
 const NavBar = ({ currentUser, logout, classes, history }) => {
   const display = currentUser ? (
@@ -53,11 +48,6 @@ const NavBar = ({ currentUser, logout, classes, history }) => {
             </Button>
           </div>
 
-          <div className={classes.toolbarMid}>
-                <InputBase className={classes.searchBar} placeholder="Search">
-                </InputBase>
-                  <SearchIcon className={classes.searchIcon}/>
-              </div>
 
           <div className={classes.toolbarRight}>
             <VideoCallOutlinedIcon
@@ -65,10 +55,10 @@ const NavBar = ({ currentUser, logout, classes, history }) => {
               onClick={() => history.push("/upload")}
             />
             <a href="https://www.linkedin.com/in/david-oh-790071123/">
-              <GitHubIcon className={classes.toolbarRightIcon} />
+              <LinkedInIcon className={classes.toolbarRightIcon} />
             </a>
             <a href="https://github.com/davidoh14/YouTwobe">
-              <LinkedInIcon className={classes.toolbarRightIcon} />
+              <GitHubIcon className={classes.toolbarRightIcon} />
             </a>
 
             {display}
@@ -81,34 +71,3 @@ const NavBar = ({ currentUser, logout, classes, history }) => {
 };
 
 export default NavBar;
-
-// const NavBar = ({ currentUser, logout, classes, history }) => {
-//     const display = currentUser ? (
-//         <div>
-//         <button onClick={logout}>
-//              Logout
-//         </button>
-//         </div>
-//     ) : (
-//         <div>
-//         <button
-//             >
-//             Login
-//         </button>
-//         </div>
-//     );
-
-    
-//   return(
-//       <div>
-//         NavBar
-//         <AppBar>
-//             <Toolbar></Toolbar>
-//         </AppBar>
-                
-//         {display}
-//     </div>
-//   )
-// };
-
-// export default NavBar;

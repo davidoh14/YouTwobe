@@ -40,7 +40,6 @@ class SignUpForm extends React.Component {
             <div>
               <TextField
                 required
-                id="filled-required"
                 label="First name"
                 variant="filled"
                 value={this.state.firstname}
@@ -55,7 +54,6 @@ class SignUpForm extends React.Component {
             <div>
               <TextField
                 required
-                id="filled-required"
                 label="Last name"
                 variant="filled"
                 value={this.state.lastname}
@@ -70,7 +68,6 @@ class SignUpForm extends React.Component {
             <div>
               <TextField
                 required
-                id="filled-required"
                 label="Username"
                 variant="filled"
                 value={this.state.username}
@@ -85,7 +82,6 @@ class SignUpForm extends React.Component {
             <div>
               <TextField
                 required
-                id="filled-required"
                 label="Email"
                 variant="filled"
                 value={this.state.email}
@@ -100,7 +96,6 @@ class SignUpForm extends React.Component {
             <div>
               <TextField
                 required
-                id="filled-required"
                 label="Password"
                 variant="filled"
                 type="password"

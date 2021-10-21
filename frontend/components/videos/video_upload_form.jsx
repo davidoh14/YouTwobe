@@ -103,7 +103,6 @@ class VideoUploadForm extends React.Component {
                 label="Description"
                 multiline
                 rows={4}
-                defaultValue="Description:"
                 value={this.state.description}
                 onChange={this.update("description")}
               />

@@ -41,7 +41,6 @@ export const login = (formUser) => (dispatch) => {
   return postSession(formUser).then(
     (user) => dispatch(receiveUser(user)),
     (errors) => { 
-      debugger
       return dispatch(receiveErrors(errors.responseJSON)) }
   )
 }

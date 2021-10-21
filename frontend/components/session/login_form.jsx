@@ -52,7 +52,6 @@ class LoginForm extends React.Component {
                 required
                 id="outlined-required"
                 label="Email"
-                defaultValue="Email"
                 value={this.state.email}
                 onChange={this.update("email")}
               />
