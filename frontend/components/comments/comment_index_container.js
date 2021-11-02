@@ -4,6 +4,7 @@ import { withRouter } from "react-router";
 import {
   composeComment,
   fetchAllComments,
+  eraseComment
 } from "../../actions/comment_actions";
 
 const mapStateToProps = (state, ownProps) => {

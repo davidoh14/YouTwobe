@@ -2,11 +2,11 @@ import React from "react";
 import Delete from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { eraseComment } from "../../actions/comment_actions";
+// import { eraseComment } from "../../actions/comment_actions";
 import { reviseComment } from "../../actions/comment_actions";
 import { Avatar } from "@mui/material";
 
-const CommentItem = ({ comment, currentUserId }) => {
+const CommentItem = ({ comment, currentUserId, eraseComment }) => {
   // handleEdit = (commentId) => {
   //     () => reviseComment(commentId)
   // };
@@ -15,6 +15,7 @@ const CommentItem = ({ comment, currentUserId }) => {
     currentUserId === comment.commenterId ? (
       <Delete onClick={() => eraseComment(comment.id)} />
     ) : null;
+
   // const editButton = (currentUserId === comment.commenterId) ?
   //             <EditIcon onClick={
 
@@ -28,7 +29,12 @@ const CommentItem = ({ comment, currentUserId }) => {
           <div className="commenter-and-date">
             <div className="commenter">{comment.user.username}</div>
             <div className="comment-date">
-              {/* {comment.createdAt} */} 2 days ago
+              {/* {comment.updatedAt.toLocaleDateString("en-US", {
+                day: "2-digit",
+                month: "2-digit",
+                year: "numeric",
+              })} */}
+              2 days ago
             </div>
           </div>
           <div className="comment-and-delete">

@@ -31,9 +31,15 @@
       window.YouTubeIconURL = "<%= image_url('YouTube-Icon.svg') %>";
     </script>
 
+    <% if signed_in? %>
+      <script type="text/javascript">
+        window.currentUser = <%= render("api/users/user.json.jbuilder", user: current_user).html_safe %>
+      </script>
+    <% end %> 
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>

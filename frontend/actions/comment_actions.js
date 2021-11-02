@@ -54,7 +54,7 @@ export const reviseComment = (commentId) => (dispatch) => {
   );
 };
 
-export const eraseComment = (commentId) => {
+export const eraseComment = (commentId) => (dispatch) => {
   return deleteComment(commentId).then(() =>
     dispatch(removeComment(commentId))
   );

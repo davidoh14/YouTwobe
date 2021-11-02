@@ -1,6 +1,5 @@
 import CommentItem from "./comment_item";
 import CommentForm from "./comment_form";
-import { eraseComment } from "../../actions/comment_actions";
 import React from "react";
 
 class CommentIndex extends React.Component {
@@ -14,15 +13,15 @@ class CommentIndex extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (
-      this.props.videoId !== prevProps.videoId ||
-      this.props.comments.length !== prevProps.comments.length
+      this.props.videoId !== prevProps.videoId 
+      // || this.props.comments.length !== prevProps.comments.length
     ) {
       this.props.fetchAllComments(this.props.videoId);
     }
   }
 
   render() {
-    const { comments, videoId, composeComment, currentUserId } = this.props;
+    const { comments, videoId, composeComment, currentUserId, eraseComment } = this.props;
 
     if (comments) {
       if (comments.length === 0) {
@@ -57,7 +56,7 @@ class CommentIndex extends React.Component {
           <ul>
             {comments.map((comment) => (
               <li key={comment.id}>
-                <CommentItem comment={comment} currentUserId={currentUserId} />
+                <CommentItem comment={comment} currentUserId={currentUserId} eraseComment={eraseComment} />
               </li>
             ))}
           </ul>
