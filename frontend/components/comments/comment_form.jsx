@@ -55,7 +55,7 @@ class CommentForm extends React.Component {
                 className="comment-form"
                 sx={{
                   fontColor: "white",
-                  width: "1016px",
+                  // width: "1016px",
                 }}
                 variant="standard"
                 value={this.state.body}

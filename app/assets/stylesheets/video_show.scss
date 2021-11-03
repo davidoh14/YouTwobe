@@ -3,28 +3,64 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    // min-width: 600px;
     // flex-wrap: flex;
 }
 
+// .show {
+//     margin-left: -100px;
+// }
+
+.video {
+    background-size: cover;
+}
+
 .player-and-comments {
-    // padding-left: 70px;
-    width: 70%;
+    width: 80%;
+    margin-right: 30px;
 }
 
 .show-recommendations {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 10%;
-    
+    align-items: flex-start;
+    width: 20%;
+
+    .recommendation-title {
+        padding-left: 160px;
+        padding-bottom: 20px;
+    }
+
+    .index {
+        padding-top: 0px;
+
+        .video-index {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            // width: 10%;
+            padding-bottom: 0px;
+            background-size: none; 
+            justify-content: none;
+            margin: 0px;
+        }
+        .video-index-item {
+            margin: 0px;
+        }
+    }
+
+
 
     .item {
         display: flex;
         flex-direction: row;
       
         .item-thumbnail {
-            height: 98px;
-            width: 175px;
+            display: flex;
+            justify-self: flex-start;
+            height: 94px;
+            width: 168px;
+            object-fit: cover;
         }
         .item-avatar{
             display: none;
@@ -35,19 +71,12 @@
     }
 }
 
-// .recommendation-title {
-//     padding-left: 20px;
-// }
 
 .show-info {
     display: flex;
     flex-direction: column;
     padding-bottom: 20px;
     border-bottom: 1px rgba(141, 141, 141, 0.301) solid;
-}
-
-.show-info-and-com{
-    width: 1066px;
 }
 
 .show-title {
@@ -149,5 +178,37 @@
     justify-content: space-between;
 }
 
+@media only screen and (min-width: 0px) and (max-width: 820px) {
+    
+    .show-body{
+        display: flex;
+        min-width: 100%;    
+        flex-direction: column;
+    }
 
 
+    .player-and-comments {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 90%;
+    
+        .show-info-and-com{
+            width: 100%
+        }
+    
+    }
+
+    .show-recommendations{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+
+        .item{
+            display: flex;
+            width: 100%;
+            min-width: 820px;
+        }
+    }
+}

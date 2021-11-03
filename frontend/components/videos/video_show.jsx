@@ -19,14 +19,14 @@ class VideoShow extends React.Component {
     const { video } = this.props;
 
     return (
-      <div>
+      <div className="show">
         <NavBarContainer />
         <div className="show-body">
           <div className="player-and-comments">
             <ReactPlayer
-              width="1066px"
-              height="600px"
               url={video.video}
+              height="auto"
+              width="100%"
               // url={window.squirrelURL}
               muted={false}
               playing={true}
@@ -69,7 +69,7 @@ class VideoShow extends React.Component {
 
           <div className="show-recommendations">
             <div className="recommendation-title">Recommendations</div>
-            <VideoIndexContainer className="show-rec-index" />
+            <VideoIndexContainer/>
           </div>
         </div>
       </div>
