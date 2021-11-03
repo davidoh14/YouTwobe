@@ -29,7 +29,6 @@ class VideoIndexItem extends React.Component {
           src={video.thumbnail}
           onClick={this.watchVideo}
         />
-        {/* <img className="item-thumbnail" src={window.squirrelPURL} onClick={this.watchVideo} /> */}
         <div className="item-info">
           <div className="item-avatar">
             <Avatar></Avatar>

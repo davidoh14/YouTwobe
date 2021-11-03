@@ -1,5 +1,5 @@
 import React from "react";
-import ShowRecsContainer from "./show_recs_container.js";
+import ShowRecsItemContainer from "./show_recs_item_container.js";
 
 class ShowRecs extends React.Component {
   constructor(props) {
@@ -19,7 +19,7 @@ class ShowRecs extends React.Component {
         <div className="video-index2">
           {videos.map((video) => (
             <div className="video-index-item2" key={video.id}>
-              <ShowRecsContainer
+              <ShowRecsItemContainer
                 video={video}
                 history={this.props.history}
               />
@@ -27,7 +27,7 @@ class ShowRecs extends React.Component {
           ))}
           {videos.map((video) => (
             <div className="video-index-item2" key={video.id}>
-              <ShowRecsContainer
+              <ShowRecsItemContainer
                 video={video}
                 history={this.props.history}
               />
