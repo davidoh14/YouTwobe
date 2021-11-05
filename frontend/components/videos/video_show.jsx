@@ -4,6 +4,7 @@ import NavBarContainer from "../nav/nav_bar_container";
 import ReactPlayer from "react-player";
 import CommentIndexContainer from "../comments/comment_index_container";
 import { Avatar, Button, Grid, Typography } from "@mui/material";
+import ShowRecsContainer from "./show_recs_container";
 
 
 class VideoShow extends React.Component {
@@ -23,15 +24,19 @@ class VideoShow extends React.Component {
         <NavBarContainer />
         <div className="show-body">
           <div className="player-and-comments">
-            <ReactPlayer
-              url={video.video}
-              height="auto"
-              width="100%"
-              // url={window.squirrelURL}
-              muted={false}
-              playing={true}
-              controls
-            />
+            <div className="show-video-wrapper">
+              <ReactPlayer
+                className="show-video"
+                url={video.video}
+                height='auto'
+                max-height='60vh'
+                width='100%'
+                // url={window.squirrelURL}
+                muted={false}
+                playing={true}
+                controls
+              />
+            </div>
             <div className="show-info-and-com">
               <div className="show-info">
                 <div className="show-title">{video.title}</div>
@@ -69,7 +74,8 @@ class VideoShow extends React.Component {
 
           <div className="show-recommendations">
             <div className="recommendation-title">Recommendations</div>
-            <VideoIndexContainer/>
+            {/* <VideoIndexContainer/> */}
+            <ShowRecsContainer />
           </div>
         </div>
       </div>

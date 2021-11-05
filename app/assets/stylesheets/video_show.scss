@@ -3,21 +3,15 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    // min-width: 600px;
-    // flex-wrap: flex;
-}
-
-// .show {
-//     margin-left: -100px;
-// }
-
-.video {
-    background-size: cover;
 }
 
 .player-and-comments {
-    width: 80%;
+    width: 69vw;
     margin-right: 30px;
+}
+
+.show-video-wrapper {
+    width: 100%;
 }
 
 .show-recommendations {
@@ -48,28 +42,8 @@
             margin: 0px;
         }
     }
-
-
-
-    .item {
-        display: flex;
-        flex-direction: row;
-      
-        .item-thumbnail {
-            display: flex;
-            justify-self: flex-start;
-            height: 94px;
-            width: 168px;
-            object-fit: cover;
-        }
-        .item-avatar{
-            display: none;
-        }
-        .item-delete{
-            display: none;
-        }
-    }
 }
+
 
 
 .show-info {
