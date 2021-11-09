@@ -15,7 +15,6 @@ class VideoIndex extends React.Component {
 
     return (
       <div className="index">
-        <div className="index-left" />
         <div className="video-index">
           {videos.map((video) => (
             <div className="video-index-item" key={video.id}>
@@ -34,7 +33,6 @@ class VideoIndex extends React.Component {
             </div>
           ))}
         </div>
-        <div className="index-right" />
       </div>
     );
   }
