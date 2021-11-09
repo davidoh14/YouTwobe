@@ -27,9 +27,6 @@ class ShowRecsItem extends React.Component {
           onClick={this.watchVideo}
         />
         <div className="item-info2">
-          <div className="item-avatar2">
-            <Avatar></Avatar>
-          </div>
           <div className="item-text2">
             <div className="item-title2" onClick={this.watchVideo}>
               {video.title}

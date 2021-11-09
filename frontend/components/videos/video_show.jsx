@@ -29,7 +29,6 @@ class VideoShow extends React.Component {
                 className="show-video"
                 url={video.video}
                 height='auto'
-                max-height='60vh'
                 width='100%'
                 // url={window.squirrelURL}
                 muted={false}
@@ -73,7 +72,6 @@ class VideoShow extends React.Component {
           </div>
 
           <div className="show-recommendations">
-            <div className="recommendation-title">Recommendations</div>
             {/* <VideoIndexContainer/> */}
             <ShowRecsContainer />
           </div>

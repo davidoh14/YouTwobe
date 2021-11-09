@@ -1,5 +1,5 @@
 .index2 {
-    padding-top: 40px;
+    display: flex;
     
     .video-index2 {
         padding-bottom: 0px;
@@ -9,20 +9,18 @@
         background-size: cover;
         justify-content: center;
     }
-    
-    .video-index-item2 {
-        margin: 10px;
-    }
+
 }
 
 .item2 {
-    margin-bottom: 40px;
+    display: flex;
+    margin-bottom: 20px;
     width: 400px;
 
     
     .item-thumbnail2 {
-        height: 240px;
-        width: 400px;
+        height: 100px;
+        width: 167px;
     }
 
     .item-info2 {
