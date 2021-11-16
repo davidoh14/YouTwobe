@@ -12,4 +12,8 @@ class Comment < ApplicationRecord
     belongs_to :commenter,
         foreign_key: :commenter_id,
         class_name: :User
+
+    has_many :likes,
+        as: :likable,
+        dependent: :destroy
 end
