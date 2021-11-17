@@ -13,3 +13,8 @@ if video.video.attached?
 else
     json.video ""
 end
+
+like = video.likes.select { |like| like.liker_id == @userId }
+json.like like[0]
+json.likesLength video.likes.select { |like| like.type == "like" }.length
+json.dislikesLength video.likes.select { |like| like.type == "dislike" }.length
