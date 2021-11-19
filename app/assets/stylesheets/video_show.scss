@@ -63,7 +63,7 @@
     align-items: center;
     color: rgb(160, 160, 160);
     padding-bottom: 20px;
-    border-bottom: 1px rgba(141, 141, 141, 0.301) solid;
+    justify-content: space-between;
 }
 
 .show-channel{
@@ -72,6 +72,7 @@
     padding-top: 20px;
     padding-bottom: 20px;
     justify-content: space-between;
+    border-top: 1px rgba(141, 141, 141, 0.301) solid; 
 }
 
 .av-and-channel{

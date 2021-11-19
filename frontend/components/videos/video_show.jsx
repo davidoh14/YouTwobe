@@ -1,10 +1,11 @@
 import React from "react";
-import VideoIndexContainer from "./video_index_container";
 import NavBarContainer from "../nav/nav_bar_container";
 import ReactPlayer from "react-player";
 import CommentIndexContainer from "../comments/comment_index_container";
-import { Avatar, Button, Grid, Typography } from "@mui/material";
+import { Avatar, Button } from "@mui/material";
 import ShowRecsContainer from "./show_recs_container";
+import VideoLikesContainer from "../likes/video_likes_container"
+
 
 
 class VideoShow extends React.Component {
@@ -44,6 +45,7 @@ class VideoShow extends React.Component {
                   {/* <div className='show-date'>
                                         Sep 16, 2021
                                     </div> */}
+                    <VideoLikesContainer video={video}/>
                 </div>
                 <div className="show-channel">
                   <div className="av-and-channel">
@@ -57,8 +59,7 @@ class VideoShow extends React.Component {
                     variant="contained"
                     sx={{
                       backgroundColor: "red",
-                    }}
-                  >
+                    }}>
                     SUBSCRIBE
                   </Button>
                 </div>

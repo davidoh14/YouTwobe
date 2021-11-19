@@ -6,6 +6,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     videoId: ownProps.match.params.videoId,
     video: state.entities.videos[ownProps.match.params.videoId],
+    currentUserId: state.session.id
   };
 };
 

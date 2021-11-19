@@ -14,7 +14,7 @@ else
     json.video ""
 end
 
-like = video.likes.select { |like| like.liker_id == @userId }
-json.like like[0]
+like = video.likes.select { |like| like.liker_id == current_user.id }
+json.currentLike like[0]
 json.likesLength video.likes.select { |like| like.kind == "like" }.length
 json.dislikesLength video.likes.select { |like| like.kind == "dislike" }.length
