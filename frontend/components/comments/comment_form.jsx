@@ -13,8 +13,6 @@ class CommentForm extends React.Component {
     this.handleCancel = this.handleCancel.bind(this);
     this.update = this.update.bind(this);
     this.currentUserAndVideoCheck = this.currentUserAndVideoCheck.bind(this);
-
-    console.log(this.state.video_id)
   }
 
   handleSubmit(e) {

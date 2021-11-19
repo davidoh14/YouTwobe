@@ -11,23 +11,33 @@ class VideoLikes extends React.Component {
 
         const { video } = this.props;
 
-        return (
-            <div className="show-likes"> 
-                {video.likesLength}
+        if (video.currentLike) {
+            like = <ThumbUpAltIcon onClick={() => console.log("click")}/>;
+        } else {
+            like = <ThumbUpOffAltIcon></ThumbUpOffAltIcon>;
+        }
 
-                {/* {
-                    if (video.currentLike) {
-                        <ThumbUpAltIcon></ThumbUpAltIcon>
-                    } else {
-                        <ThumbUpOffAltIcon></ThumbUpOffAltIcon>
-                    }
-                } */}
-                <button onClick={console.log("click")}>
-                    <ThumbUpAltIcon></ThumbUpAltIcon>
-                </button>
-                {video.dislikesLength}
-            </div>
-        )
+        // if (video.currentLike) {
+        //   Like = <ThumbUpAltIcon></ThumbUpAltIcon>;
+        // } else {
+        //   Like = <ThumbUpOffAltIcon></ThumbUpOffAltIcon>;
+        // }
+
+        if (!video) {
+            return null;
+        }
+
+        return (
+          <div className="show-likes">
+            {like}
+
+            {video.likesLength}
+
+            <ThumbDownAltIcon onClick={() => console.log("click2")} />
+
+            {video.dislikesLength}
+          </div>
+        );
     }
 }
 
