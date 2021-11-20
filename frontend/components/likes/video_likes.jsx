@@ -1,5 +1,4 @@
 import React from "react"
-import LikesContainer from "./video_likes_container"
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
 import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
@@ -7,11 +6,15 @@ import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 
 
 class VideoLikes extends React.Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {};
-    //     this.handleLike = this.handleLike.bind(this);
-    // };
+    constructor(props) {
+        super(props);
+        this.state = {
+            kind: "",
+            likableType: "Video",
+            likableId: this.props.video.id
+        };
+        this.handleLike = this.handleLike.bind(this);
+    };
 
     render () {
 
@@ -47,7 +50,7 @@ class VideoLikes extends React.Component {
 
         return (
           <div className="show-likes">
-              
+
             {like}
 
             {video.likesLength}
