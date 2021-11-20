@@ -47,6 +47,7 @@ class VideoLikes extends React.Component {
 
         return (
           <div className="show-likes">
+              
             {like}
 
             {video.likesLength}
@@ -55,7 +56,6 @@ class VideoLikes extends React.Component {
 
             {video.dislikesLength}
 
-            
           </div>
         );
     }
