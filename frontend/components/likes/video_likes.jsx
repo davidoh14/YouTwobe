@@ -6,12 +6,11 @@ import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 
 
-function VideoLikes() {
+function VideoLikes({ video, createLike, updateLike, deleteLike }) {
 
-    const [ currentLike, setCurrentLike ] = useState(currentLike)
-
-    const { video } = this.props;
-
+    const [ currentLike, setCurrentLike ] = useState(video.currentLike) // state for creating or deleting
+    // state for editing
+ 
     let like;
 
     if (video.currentLike && video.currentLike.kind === "like") {
@@ -22,7 +21,8 @@ function VideoLikes() {
         like = <ThumbUpOffAltIcon onClick={() => console.log("patch dislike to like")}/>;
     } else {
         // if like doesn't exist, show unfilled like with action to create like
-        like = <ThumbUpOffAltIcon onClick={() => console.log("create like")} />;
+        like = <ThumbUpOffAltIcon onClick={() => 
+            console.log("create like")} />;
     }
 
     let dislike;

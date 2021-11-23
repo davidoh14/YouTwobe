@@ -1,15 +1,19 @@
 import { connect } from "react-redux";
-import VideoLikes from "./video_likes";
+import VideoLikes from "./video_likes"
+import { createLike, updateLike, deleteLike } from "../../util/like_api_util";
 
-const mapStateToProps = (state) => {
-    return null
+const mSTP = (state) => {
+    return {
+        likes: Object.values(state.entities.likes)
+    };
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return null
+const mDTP = (dispatch) => {
+    return {
+        createLike: () => dispatch(createLike()),
+        updateLike: () => dispatch(updateLike()),
+        deleteLike: () => dispatch(deleteLike())
+    };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(VideoLikes)
-
-
-
+export default connect(mSTP, mDTP)(VideoLikes);
