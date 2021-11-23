@@ -1,5 +1,10 @@
 class Api::LikesController < ApplicationController
 
+    def index
+        @likes = Like.all
+        render :index
+    end
+
     def create
         # if like_params[:likable_type] == "video"
         #     likable = Video.find_by(id: like_params[:likable_id])

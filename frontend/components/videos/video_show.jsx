@@ -18,7 +18,9 @@ class VideoShow extends React.Component {
       return null;
     }
 
-    const { video } = this.props;
+    const { video, fetchLikes } = this.props;
+
+    console.log(video);
 
     return (
       <div className="show">
@@ -45,7 +47,7 @@ class VideoShow extends React.Component {
                   {/* <div className='show-date'>
                                         Sep 16, 2021
                                     </div> */}
-                    <VideoLikesContainer video={video}/>
+                    <VideoLikesContainer video={video} fetchLikes={fetchLikes}/>
                 </div>
                 <div className="show-channel">
                   <div className="av-and-channel">

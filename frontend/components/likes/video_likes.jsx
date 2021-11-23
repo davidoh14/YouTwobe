@@ -4,12 +4,18 @@ import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
 import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
+import { LOGOUT_CURRENT_USER } from "../../actions/session_actions";
 
 
-function VideoLikes({ video, createLike, updateLike, deleteLike }) {
+function VideoLikes({ video, currentUserId, fetchLikes, createLike, updateLike, deleteLike }) {
+
+    useEffect(() => {
+        fetchLikes()
+    }, []);
 
     const [ currentLike, setCurrentLike ] = useState(video.currentLike) // state for creating or deleting
     // state for editing
+    // const [  ]
  
     let like;
 
@@ -22,7 +28,12 @@ function VideoLikes({ video, createLike, updateLike, deleteLike }) {
     } else {
         // if like doesn't exist, show unfilled like with action to create like
         like = <ThumbUpOffAltIcon onClick={() => 
-            console.log("create like")} />;
+            createLike({
+                likerId: currentUserId,
+                kind: "like",
+                likableType: "Video",
+                likableId: video.id
+            })} />;
     }
 
     let dislike;

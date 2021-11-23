@@ -4,7 +4,8 @@ import { createLike, updateLike, deleteLike } from "../../util/like_api_util";
 
 const mSTP = (state) => {
     return {
-        likes: Object.values(state.entities.likes)
+        likes: Object.values(state.entities.likes),
+        currentUserId: state.session.id
     };
 };
 
