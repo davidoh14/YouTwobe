@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import VideoLikes from "./video_likes"
-import { createLike, updateLike, deleteLike } from "../../util/like_api_util";
+import { fetchLikes, createLike, updateLike, deleteLike } from "../../actions/like_actions";
 
 const mSTP = (state) => {
     return {
@@ -11,6 +11,7 @@ const mSTP = (state) => {
 
 const mDTP = (dispatch) => {
     return {
+        fetchLikes: () => dispatch(fetchLikes()),
         createLike: () => dispatch(createLike()),
         updateLike: () => dispatch(updateLike()),
         deleteLike: () => dispatch(deleteLike())
