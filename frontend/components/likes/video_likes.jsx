@@ -13,9 +13,12 @@ function VideoLikes({ video, currentUserId, fetchLikes, createLike, updateLike, 
         fetchLikes()
     }, []);
 
+    // filterVideoLikes(){
+
+    // }
+
     const [ currentLike, setCurrentLike ] = useState(video.currentLike) // state for creating or deleting
-    // state for editing
-    // const [  ]
+    const [ likeCount, setLikeCount ] = useState()
  
     let like;
 

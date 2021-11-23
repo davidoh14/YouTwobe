@@ -4,7 +4,7 @@ export const RECEIVE_LIKES = "RECEIVE_LIKES";
 export const RECEIVE_LIKE = "RECEIVE_LIKE";
 export const REMOVE_LIKE = "REMOVE_LIKE";
 
-const receiveLikes = () => {
+const receiveLikes = (likes) => {
     return {
         type: RECEIVE_LIKES,
         likes
