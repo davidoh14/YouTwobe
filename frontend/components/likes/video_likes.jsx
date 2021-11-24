@@ -9,7 +9,9 @@ import { LOGOUT_CURRENT_USER } from "../../actions/session_actions";
 
 function VideoLikes({ video, likes, currentUserId, fetchLikes, createLike, updateLike, deleteLike }) {
     const [currentLike, setCurrentLike] = useState([]);
-    // let currentLike = [];
+    const [likeCount, setLikeCount] = useState(0);
+    const [dislikeCount, setDislikeCount] = useState(0);
+
     const mounted = useRef();
 
         let like;
@@ -22,22 +24,36 @@ function VideoLikes({ video, likes, currentUserId, fetchLikes, createLike, updat
             mounted.current = true;
             console.log('if')
         } else {
-            filterVideoLikes();
+            findCurrentLike();
             likeHandler();
+            filterLikesDislikes();
             console.log('else')
         } 
     }, [likes]);
 
-    function filterVideoLikes(){
-        let filteredLikes = likes.find(
-          (like) =>
-            like.likerId === currentUserId && like.likableId === video.id
-        )
+    function findCurrentLike(){
+        let filteredLikes = likes.find((like) =>
+            like.likerId === currentUserId && like.likableId === video.id)
         setCurrentLike(filteredLikes);
-        // currentLike = likes.filter(like => (like.likerId === currentUserId && like.likableId === video.id));
-        // return currentLike
+
         console.log(currentLike, 'filter');
     };
+
+    function filterLikesDislikes(){
+        let filteredLikeCount = 0;
+        let filteredDislikeCount = 0;
+        
+        likes.forEach((like) => {
+            if (like.kind === "like") {
+                filteredLikeCount += 1
+            } else {
+                filteredDislikeCount += 1
+            };
+        });
+
+        setLikeCount(filteredLikeCount);
+        setDislikeCount(filteredDislikeCount);
+    }
 
     function likeHandler(){
         if (currentLike && currentLike.kind === "like") {
@@ -84,11 +100,11 @@ function VideoLikes({ video, likes, currentUserId, fetchLikes, createLike, updat
     
                 {like}
         
-                {/* {video.likesLength} */}
+                {likeCount}
         
                 {dislike}
         
-                {/* {video.dislikesLength} */}
+                {dislikeCount}
     
             </div>
         );
