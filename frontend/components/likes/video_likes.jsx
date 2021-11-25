@@ -21,9 +21,9 @@ function VideoLikes({ video, likes, currentUserId, fetchLikes, createLike, updat
             mounted.current = true;
             console.log('if')
         } else {
-            // findCurrentLike();
-            filterLikesDislikes();
+            findCurrentLike();
             likeHandler();
+            filterLikesDislikes();
             console.log('else')
         } 
     }, [likes]);
@@ -32,26 +32,23 @@ function VideoLikes({ video, likes, currentUserId, fetchLikes, createLike, updat
 
     let dislike;
 
-    // function findCurrentLike(){
-    //     let filteredLikes = likes.find((like) =>
-    //         like.likerId === currentUserId && like.likableId === video.id)
-    //     setCurrentLike(filteredLikes);
+    function findCurrentLike(){
+        let filteredLikes = likes.find((like) =>
+            like.likerId === currentUserId && like.likableId === video.id)
+        setCurrentLike(filteredLikes);
 
-    //     console.log(currentLike, 'filter');
-    // };
+        console.log(currentLike, 'filter');
+    };
 
     function filterLikesDislikes(){
         let filteredLikeCount = 0;
         let filteredDislikeCount = 0;
         
         likes.forEach((like) => {
-            if (like.likerId === currentUserId && like.likableId === video.id) {
-                setCurrentLike(like);
-                filteredLikeCount += 1;
-            } else if (like.kind === "like" && like.likableId === video.id) {
-              filteredLikeCount += 1;
-            } else if (like.kind === "dislike" && like.likableId === video.id) {
-              filteredDislikeCount += 1;
+            if (like.kind === "like") {
+                filteredLikeCount += 1
+            } else {
+                filteredDislikeCount += 1
             };
         });
 
