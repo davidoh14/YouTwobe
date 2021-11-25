@@ -45,9 +45,9 @@ function VideoLikes({ video, likes, currentUserId, fetchLikes, createLike, updat
         let filteredDislikeCount = 0;
         
         likes.forEach((like) => {
-            if (like.kind === "like") {
+            if (like.kind === "like" && like.likableId === video.id) {
                 filteredLikeCount += 1
-            } else {
+            } else if (like.kind === "dislike" && like.likableId === video.id){
                 filteredDislikeCount += 1
             };
         });
