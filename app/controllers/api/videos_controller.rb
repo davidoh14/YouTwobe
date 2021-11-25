@@ -7,8 +7,7 @@ class Api::VideosController < ApplicationController
     def show
         @video = Video.find_by(id: params[:id])
         
-        if @video 
-            # @video.update(view_count: view_count+=1)
+        if @video.save
             render :show
          else 
             render json: @video.errors.full_messages, status: 422

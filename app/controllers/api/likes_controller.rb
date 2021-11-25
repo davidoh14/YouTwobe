@@ -13,9 +13,8 @@ class Api::LikesController < ApplicationController
         # end
 
         @like = Like.new(like_params)
-        puts @like
+
         if @like.save
-            puts "--------------------"
             render :show
         # if likable.likes.create(like_params)
         #     @like = Like.find_by(liker_id: like_params[:liker_id],
@@ -39,11 +38,13 @@ class Api::LikesController < ApplicationController
         end
     end
 
-    def delete
+    def destroy
         @like = Like.find_by(id: params[:id])
 
         if @like.destroy
-            render json: "deleted"
+            # @like.destroy
+            # render json: "deleted"
+            render :show
         else
             render json: @like.errors.full_messages, status: 404
         end

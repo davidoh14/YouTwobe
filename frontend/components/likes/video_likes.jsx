@@ -4,20 +4,17 @@ import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
 import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
-import { LOGOUT_CURRENT_USER } from "../../actions/session_actions";
 
 
 function VideoLikes({ video, likes, currentUserId, fetchLikes, createLike, updateLike, deleteLike }) {
+
     const [currentLike, setCurrentLike] = useState([]);
     const [likeCount, setLikeCount] = useState(0);
     const [dislikeCount, setDislikeCount] = useState(0);
 
+
     const mounted = useRef();
-
-        let like;
-
-        let dislike;
-
+    
     useEffect(() => {
         if (!mounted.current) {
             fetchLikes();
@@ -30,6 +27,10 @@ function VideoLikes({ video, likes, currentUserId, fetchLikes, createLike, updat
             console.log('else')
         } 
     }, [likes]);
+    
+    let like;
+
+    let dislike;
 
     function findCurrentLike(){
         let filteredLikes = likes.find((like) =>
@@ -57,57 +58,71 @@ function VideoLikes({ video, likes, currentUserId, fetchLikes, createLike, updat
 
     function likeHandler(){
         if (currentLike && currentLike.kind === "like") {
-        // if like exists and kind = like, show a filled like button with action to delete like
-        like = <ThumbUpAltIcon onClick={() => console.log("delete like")} />;
+            like = <ThumbUpAltIcon onClick={() => deleteLike(currentLike.id)} />;
         } else if (currentLike && currentLike.kind === "dislike") {
-        // if like exists but is kind = dislike, show unfilled like with action to post like
-        like = (
-            <ThumbUpOffAltIcon onClick={() => console.log("patch dislike to like")} />
-        );
+            like = <ThumbUpOffAltIcon onClick={() => updateLike({
+                id: currentLike.id,
+                liker_id: currentUserId,
+                kind: "like",
+                likable_type: "Video",
+                likable_id: video.id
+            })} />;
         } else {
-        // if like doesn't exist, show unfilled like with action to create like
-        like = <ThumbUpOffAltIcon onClick={() => console.log("like")} />;
-        // createLike({
-        //     likerId: currentUserId,
-        //     kind: "like",
-        //     likableType: "Video",
-        //     likableId: video.id
-        // })} />;
+            like = <ThumbUpOffAltIcon onClick={() => createLike({
+                liker_id: currentUserId,
+                kind: "like",
+                likable_type: "Video",
+                likable_id: video.id
+            })} />;
         }
     
         if (currentLike && currentLike.kind === "dislike") {
-        // if dislike exists and kind = dislike, show a filled dislike button with action to delete dislike
-        dislike = <ThumbDownAltIcon onClick={() => console.log("delete dislike")} />;
+            dislike = <ThumbDownAltIcon onClick={() => deleteLike(currentLike.id)} />;
         } else if (currentLike && currentLike.kind === "like") {
-        // if dislike exists but is kind = like, show unfilled dislike with action to post dislike
-        dislike = (
-            <ThumbDownOffAltIcon onClick={() => console.log("patch like to dislike")} />
-        );
+            dislike = (
+              <ThumbDownOffAltIcon
+                onClick={() =>
+                  updateLike({
+                    id: currentLike.id,
+                    liker_id: currentUserId,
+                    kind: "dislike",
+                    likable_type: "Video",
+                    likable_id: video.id,
+                  })
+                }
+              />
+            );
         } else {
-        // if dislike doesn't exist, show unfilled dislike with action to create dislike
-        dislike = (
-            <ThumbDownOffAltIcon onClick={() => console.log("create dislike")} />
-        );
+            dislike = (
+              <ThumbDownOffAltIcon
+                onClick={() =>
+                  createLike({
+                    liker_id: currentUserId,
+                    kind: "dislike",
+                    likable_type: "Video",
+                    likable_id: video.id,
+                  })
+                }
+              />
+            );
         }
     }
 
+    likeHandler();
+    return (
+        
+        <div className="show-likes">
 
-        console.log(currentLike, 'currentLike return');
-        likeHandler();
-        return (
-            
-            <div className="show-likes">
+            {like}
     
-                {like}
-        
-                {likeCount}
-        
-                {dislike}
-        
-                {dislikeCount}
+            {likeCount}
     
-            </div>
-        );
+            {dislike}
+    
+            {dislikeCount}
+
+        </div>
+    );
 
 
 
