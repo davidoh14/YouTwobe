@@ -112,14 +112,21 @@ function VideoLikes({ video, likes, currentUserId, fetchLikes, createLike, updat
     return (
         
         <div className="show-likes">
-
-            {like}
+            <button className="show-like-button">
+                {like}
+            </button>
     
-            {likeCount}
+            <div className="show-likes-count">
+                {likeCount}
+            </div>
+             
+            <button className="show-dislike-button">
+                {dislike}
+            </button>
     
-            {dislike}
-    
-            {dislikeCount}
+            <div className="show-dislikes-count">
+                {dislikeCount}
+            </div>
 
         </div>
     );

@@ -26,9 +26,9 @@ class CommentIndex extends React.Component {
     if (comments) {
       if (comments.length === 0) {
         return (
-          <div>
-            <div>This video has no comments</div>
-            <div>
+          <div className="comments">
+            <div className="comment-count">This video has no comments</div>
+            <div className="comment-form">
               <CommentForm
                 composeComment={composeComment}
                 videoId={videoId}
@@ -41,10 +41,9 @@ class CommentIndex extends React.Component {
       }
 
       return (
-        <div>
+        <div className="comments">
           <div className="comment-count">{comments.length} Comments</div>
-
-          <div>
+          <div className="comment-form">
             <CommentForm
               composeComment={composeComment}
               videoId={videoId}
@@ -56,7 +55,11 @@ class CommentIndex extends React.Component {
           <ul>
             {comments.map((comment) => (
               <li key={comment.id}>
-                <CommentItem comment={comment} currentUserId={currentUserId} eraseComment={eraseComment} />
+                <CommentItem
+                  comment={comment}
+                  currentUserId={currentUserId}
+                  eraseComment={eraseComment}
+                />
               </li>
             ))}
           </ul>

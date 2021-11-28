@@ -62,7 +62,6 @@
     flex-direction: row;
     align-items: center;
     color: rgb(160, 160, 160);
-    padding-bottom: 20px;
     justify-content: space-between;
 }
 
@@ -88,6 +87,22 @@
 .show-likes {
     display: flex;
     align-items: center;
+    color: white;
+    padding-bottom: 10px;
+    border-bottom: 1px white solid;
+}
+
+.show-like-button {
+    margin-right: 5px;
+    // font-size: 5px !important;
+}
+
+.show-likes-count {
+    margin-right: 20px;
+}
+
+.show-dislike-button {
+    margin-right: 5px;
 }
 
 .show-subs {
