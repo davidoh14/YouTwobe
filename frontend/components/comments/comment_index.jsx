@@ -28,7 +28,7 @@ class CommentIndex extends React.Component {
         return (
           <div className="comments">
             <div className="comment-count">This video has no comments</div>
-            <div className="comment-form">
+            <div>
               <CommentForm
                 composeComment={composeComment}
                 videoId={videoId}
@@ -43,7 +43,7 @@ class CommentIndex extends React.Component {
       return (
         <div className="comments">
           <div className="comment-count">{comments.length} Comments</div>
-          <div className="comment-form">
+          <div>
             <CommentForm
               composeComment={composeComment}
               videoId={videoId}

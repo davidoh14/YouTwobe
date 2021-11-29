@@ -48,18 +48,28 @@ class CommentForm extends React.Component {
         <div className="add-comment">
           <Avatar className="comment-avatar" />
           <div className="comment-form-and-buttons">
-            <form>
-              <TextField
+            <form className="comment-form">
+              <label>
+                <input
+                  type="text"
+                  className="comment-input"
+                  value={this.state.body}
+                  placeholder={"Add a public comment..."}
+                  onChange={this.update("body")}
+                />
+              </label>
+              {/* <TextField
                 className="comment-form"
                 sx={{
                   fontColor: "white",
+                  color: "white"
                   // width: "1016px",
                 }}
                 variant="standard"
                 value={this.state.body}
                 placeholder={"Add a public comment..."}
                 onChange={this.update("body")}
-              />
+              /> */}
               <div className="comment-buttons">
                 <Button
                   sx={{

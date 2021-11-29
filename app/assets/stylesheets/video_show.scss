@@ -126,10 +126,22 @@
     padding-bottom: 25px;
 }
 
+.comment-input {
+    -webkit-appearance: none;
+    // border-width: 0px;
+    border-style: none;
+    border-bottom: 1px black solid;
+    background-color: #181818;
+    color: white;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
 .comment-form-and-buttons {
     display: flex;
     flex-direction: column;
     padding-left: 10px;
+    width: 100%;
 }
 
 .comment-buttons{
