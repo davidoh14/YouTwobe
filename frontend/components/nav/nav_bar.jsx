@@ -22,8 +22,18 @@ const NavBar = ({ currentUser, logout, classes, history }) => {
   
   const display = currentUser ? (
     <div>
-      <Button onClick={logout}>
-        <AccountCircleIcon></AccountCircleIcon> Logout
+      <Button
+        onClick={logout}
+        sx={{
+          color: "white",
+        }}
+      >
+        <AccountCircleIcon
+          sx={{
+            color: "white",
+            
+          }}
+        ></AccountCircleIcon> Logout
       </Button>
     </div>
   ) : (
@@ -32,8 +42,16 @@ const NavBar = ({ currentUser, logout, classes, history }) => {
         className={classes.loginButton}
         variant="outlined"
         onClick={() => history.push("/login")}
+        sx={{
+          color: "white",
+          borderColor: "white",
+        }}
       >
-        <PersonOutlineIcon />
+        <PersonOutlineIcon
+          sx={{
+            color: "white",
+          }}
+        />
         Login
       </Button>
     </div>
