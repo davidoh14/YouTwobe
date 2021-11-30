@@ -9,11 +9,17 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import SearchIcon from "@mui/icons-material/Search";
 import { InputBase } from "@mui/material";
-
-
+import { useState } from "react";
 
 
 const NavBar = ({ currentUser, logout, classes, history }) => {
+
+  const [searchTerm, setSearchTerm] = useState("");
+
+  function update(){
+
+  }
+  
   const display = currentUser ? (
     <div>
       <Button onClick={logout}>
@@ -71,12 +77,14 @@ const NavBar = ({ currentUser, logout, classes, history }) => {
                 width: "95%",
               }}
             ></InputBase>
-            <SearchIcon 
-              className={classes.searchIcon} 
-              sx={{
-                width: "30px"
-              }}
-            />
+            <button>
+              <SearchIcon 
+                className={classes.searchIcon} 
+                sx={{
+                  width: "30px"
+                }}
+              />
+            </button>
           </div>
 
           <div className={classes.toolbarRight}>

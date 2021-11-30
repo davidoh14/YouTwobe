@@ -84,7 +84,7 @@ const useNavStyles = {
     borderRadius: "3px",
     borderColor: "#FFFFFF",
     borderRight: "1px solid #393939",
-    paddingLeft: "15px"
+    paddingLeft: "10px"
   },
 
   searchIcon: {

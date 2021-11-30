@@ -7,12 +7,13 @@ import { AuthRoute, ProtectedRoute } from "../util/route_util";
 import PageNotFound from "./session/page_not_found";
 import VideoShowContainer from "./videos/video_show_container"
 import VideoUploadFormContainer from "./videos/video_upload_form_container";
-
+import Search from "./nav/search"
 
 const App = () => (
   <div>
     <header>
       <Switch>
+        <Route path='/search/' component={Search}/>
         <ProtectedRoute path='/upload/' component={VideoUploadFormContainer}/>
         <Route path='/watch/:videoId' component={VideoShowContainer}/>
         <AuthRoute path="/login" component={login_form_container} />
