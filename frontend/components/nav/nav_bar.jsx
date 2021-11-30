@@ -7,6 +7,10 @@ import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import SearchIcon from "@mui/icons-material/Search";
+import { InputBase } from "@mui/material";
+
+
 
 
 const NavBar = ({ currentUser, logout, classes, history }) => {
@@ -48,6 +52,32 @@ const NavBar = ({ currentUser, logout, classes, history }) => {
             </Button>
           </div>
 
+          {/* <div className="searchbar">
+            <label>
+              <input 
+                className="search-input"
+                type="text"
+                placeholder="Search"
+              ></input>
+              <SearchIcon></SearchIcon>
+            </label>
+          </div> */}
+          <div className={classes.toolbarMid}>
+            <InputBase
+              className={classes.searchBar}
+              placeholder="Search"
+              sx={{
+                color: "white",
+                width: "95%",
+              }}
+            ></InputBase>
+            <SearchIcon 
+              className={classes.searchIcon} 
+              sx={{
+                width: "30px"
+              }}
+            />
+          </div>
 
           <div className={classes.toolbarRight}>
             <VideoCallOutlinedIcon

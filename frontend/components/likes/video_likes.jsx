@@ -12,7 +12,6 @@ function VideoLikes({ video, likes, currentUserId, fetchLikes, createLike, updat
     const [likeCount, setLikeCount] = useState(0);
     const [dislikeCount, setDislikeCount] = useState(0);
 
-
     const mounted = useRef();
     
     useEffect(() => {

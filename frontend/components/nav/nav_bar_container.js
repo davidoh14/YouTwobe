@@ -75,18 +75,21 @@ const useNavStyles = {
     border: "1px solid #393939",
     borderRadius: "3px",
     scale: "1.2",
+    width: "40%",
+    height: "90%"
   },
 
   searchBar: {
     backgroundColor: "#121212",
     borderRadius: "3px",
     borderColor: "#FFFFFF",
-    width: "300px",
+    borderRight: "1px solid #393939",
+    paddingLeft: "15px"
   },
 
   searchIcon: {
-    borderLeft: "1px solid #393939",
     padding: "0px 15px 0px 15px",
+    width: "50px"
   },
 
   toolbarRight: {
@@ -123,9 +126,6 @@ const useNavStyles = {
   },
 };
 
-// const Search = styled('div') => ({
-
-// })
 
 export default withRouter(
   connect(mapStateToProps, mapDispatchToProps)(withStyles(useNavStyles)(NavBar))
