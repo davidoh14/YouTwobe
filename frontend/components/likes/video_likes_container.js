@@ -12,6 +12,7 @@ const mSTP = (state) => {
 const mDTP = (dispatch) => {
     return {
         fetchLikes: () => dispatch(fetchLikes()),
+        fetchLike: () => dispatch(fetchLike(likeId)),
         createLike: (like) => dispatch(createLike(like)),
         updateLike: (like) => dispatch(updateLike(like)),
         deleteLike: (likeId) => dispatch(deleteLike(likeId))

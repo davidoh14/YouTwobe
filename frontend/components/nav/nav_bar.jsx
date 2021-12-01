@@ -16,10 +16,6 @@ const NavBar = ({ currentUser, logout, classes, history }) => {
 
   const [searchTerm, setSearchTerm] = useState("");
 
-  function update(){
-
-  }
-  
   const display = currentUser ? (
     <div>
       <Button
@@ -90,16 +86,19 @@ const NavBar = ({ currentUser, logout, classes, history }) => {
             <InputBase
               className={classes.searchBar}
               placeholder="Search"
+              onChange={(e) => setSearchTerm(e.currentTarget.value)}
               sx={{
                 color: "white",
                 width: "95%",
               }}
-            ></InputBase>
+            />
+
             <button>
-              <SearchIcon 
-                className={classes.searchIcon} 
+              <SearchIcon
+                className={classes.searchIcon}
+                onClick={() => history.push(`/results/${searchTerm}`)} 
                 sx={{
-                  width: "30px"
+                  width: "30px",
                 }}
               />
             </button>
