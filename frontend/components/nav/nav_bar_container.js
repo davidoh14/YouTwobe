@@ -79,6 +79,10 @@ const useNavStyles = {
     height: "90%"
   },
 
+  searchForm: {
+    display: "flex",
+  },
+
   searchBar: {
     backgroundColor: "#121212",
     borderRadius: "3px",

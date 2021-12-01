@@ -83,25 +83,29 @@ const NavBar = ({ currentUser, logout, classes, history }) => {
             </label>
           </div> */}
           <div className={classes.toolbarMid}>
-            <InputBase
-              className={classes.searchBar}
-              placeholder="Search"
-              onChange={(e) => setSearchTerm(e.currentTarget.value)}
-              sx={{
-                color: "white",
-                width: "95%",
-              }}
-            />
-
-            <button>
-              <SearchIcon
-                className={classes.searchIcon}
-                onClick={() => history.push(`/results/${searchTerm}`)} 
+            <form
+              className={classes.searchForm}
+              onSubmit={() => history.push(`/results/${searchTerm}`)}
+            >
+              <InputBase
+                className={classes.searchBar}
+                placeholder="Search"
+                onChange={(e) => setSearchTerm(e.currentTarget.value)}
                 sx={{
-                  width: "30px",
+                  color: "white",
+                  width: "95%",
                 }}
               />
-            </button>
+              <button type="button">
+                <SearchIcon
+                  className={classes.searchIcon}
+                  onClick={() => history.push(`/results/${searchTerm}`)}
+                  sx={{
+                    width: "30px",
+                  }}
+                />
+              </button>
+            </form>
           </div>
 
           <div className={classes.toolbarRight}>
