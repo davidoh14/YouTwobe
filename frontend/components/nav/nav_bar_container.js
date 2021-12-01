@@ -76,11 +76,12 @@ const useNavStyles = {
     borderRadius: "3px",
     scale: "1.2",
     width: "40%",
-    height: "90%"
+    height: "90%",
   },
 
   searchForm: {
     display: "flex",
+    width: "100%",
   },
 
   searchBar: {
@@ -88,12 +89,16 @@ const useNavStyles = {
     borderRadius: "3px",
     borderColor: "#FFFFFF",
     borderRight: "1px solid #393939",
-    paddingLeft: "10px"
+    paddingLeft: "10px",
   },
 
   searchIcon: {
     padding: "0px 15px 0px 15px",
-    width: "50px"
+    width: "50px",
+  },
+
+  searchButtonWrapper: {
+    backgroundColor: "#333333",
   },
 
   toolbarRight: {

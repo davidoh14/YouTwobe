@@ -78,16 +78,6 @@ const NavBar = ({ currentUser, logout, classes, history }) => {
             </Button>
           </div>
 
-          {/* <div className="searchbar">
-            <label>
-              <input 
-                className="search-input"
-                type="text"
-                placeholder="Search"
-              ></input>
-              <SearchIcon></SearchIcon>
-            </label>
-          </div> */}
           <div className={classes.toolbarMid}>
             <form
               className={classes.searchForm}
@@ -102,7 +92,7 @@ const NavBar = ({ currentUser, logout, classes, history }) => {
                   width: "95%",
                 }}
               />
-              <button type="button">
+              <button type="button" className={classes.searchButtonWrapper}>
                 <SearchIcon
                   className={classes.searchIcon}
                   onClick={() => searchFormHandler()}
