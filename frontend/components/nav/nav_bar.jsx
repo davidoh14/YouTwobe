@@ -53,6 +53,12 @@ const NavBar = ({ currentUser, logout, classes, history }) => {
     </div>
   );
 
+  function searchFormHandler() {
+    if (searchTerm) {
+      history.push(`/results/${searchTerm}`)
+    }
+  }
+
   return (
     <div>
       <AppBar elevation={0} className={classes.appbar}>
@@ -85,7 +91,7 @@ const NavBar = ({ currentUser, logout, classes, history }) => {
           <div className={classes.toolbarMid}>
             <form
               className={classes.searchForm}
-              onSubmit={() => history.push(`/results/${searchTerm}`)}
+              onSubmit={() => searchFormHandler()}
             >
               <InputBase
                 className={classes.searchBar}
@@ -99,7 +105,7 @@ const NavBar = ({ currentUser, logout, classes, history }) => {
               <button type="button">
                 <SearchIcon
                   className={classes.searchIcon}
-                  onClick={() => history.push(`/results/${searchTerm}`)}
+                  onClick={() => searchFormHandler()}
                   sx={{
                     width: "30px",
                   }}
