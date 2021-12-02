@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
-import Search from "./search";
+import { Search } from "./search";
+import { withRouter } from "react-router";
 import { fetchVideos } from "../../actions/video_actions";
 
 const mSTP = ({ entities, session }, ownProps) => ({
@@ -12,4 +13,4 @@ const mDTP = (dispatch) => ({
     fetchVideos: () => dispatch(fetchVideos())
 });
 
-export default connect(mSTP, mDTP)(Search);
+export default withRouter(connect(mSTP, mDTP)(Search));

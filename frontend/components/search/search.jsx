@@ -3,42 +3,48 @@ import NavBarContainer from "../nav/nav_bar_container"
 import VideoRow from "./video_row"
 import { useState, useEffect } from "react"
 
-const Search = ({ currentUser, videos, fetchVideos, searchTerm }) => {
+export const Search = ({ currentUser, videos, fetchVideos, searchTerm }) => {
 
     const [ filteredVideos, setFilteredVideos ] = useState([])
 
     useEffect(() => {
         fetchVideos()
         setFilteredVideos(filteredVideos => [...filteredVideos, ...videos])
-        parseSearchTerm()
+        // parse()
     }, [])
+
+
     
     // useEffect(() => {
         // }, [videos])
     
-        let parsedSearchTerm = "";
+    // let parsedSearchTerm;
         
-    function parseSearchTerm(){
-        parsedSearchTerm = searchTerm.slice(9)
-        parsedSearchTerm.split(" ")
-    }
+    // function parse(){
+    //     let slicedSearchTerm = searchTerm.slice(8)
+    //     // let parsedSearchTerm = slicedSearchTerm.split(" ")
+    //     console.log('sliced', slicedSearchTerm)
+    // }
     
     
     // function filterVideos() {
         //     videos.filter(video => video.title)
         // }
         
-        console.log('searchTerm', searchTerm)
-        console.log('parsed', parsedSearchTerm)
-        console.log('videos', videos)
-        console.log('filtered', filteredVideos)
-        
+
+    // console.log('searchTerm', searchTerm)
+    // console.log('parsed', parsedSearchTerm)
+    // console.log('videos', videos)
+    // console.log('filtered', filteredVideos)
+    if (!videos) {
+        return null
+    } else {
         return (
-        <div>
-            <NavBarContainer></NavBarContainer>
-        </div>
-    )
+            <div>
+                {console.log('return', filteredVideos)}
+                <NavBarContainer></NavBarContainer>
+            </div>
+        )
+    }
 
 }
-
-export default Search;
