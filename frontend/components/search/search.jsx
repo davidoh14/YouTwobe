@@ -9,17 +9,31 @@ const Search = ({ currentUser, videos, fetchVideos, searchTerm }) => {
 
     useEffect(() => {
         fetchVideos()
-    }, [])
-
-    useEffect(() => {
         setFilteredVideos(filteredVideos => [...filteredVideos, ...videos])
+        parseSearchTerm()
+    }, [])
+    
+    // useEffect(() => {
+        // }, [videos])
+    
+        let parsedSearchTerm = "";
+        
+    function parseSearchTerm(){
+        parsedSearchTerm = searchTerm.slice(9)
+        parsedSearchTerm.split(" ")
+    }
+    
+    
+    // function filterVideos() {
+        //     videos.filter(video => video.title)
+        // }
+        
+        console.log('searchTerm', searchTerm)
+        console.log('parsed', parsedSearchTerm)
+        console.log('videos', videos)
         console.log('filtered', filteredVideos)
-    }, [videos])
-
-    console.log('searchTerm', searchTerm)
-    console.log('videos', videos)
-
-    return (
+        
+        return (
         <div>
             <NavBarContainer></NavBarContainer>
         </div>
