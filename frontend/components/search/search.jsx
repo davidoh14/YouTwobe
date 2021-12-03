@@ -3,10 +3,11 @@ import NavBarContainer from "../nav/nav_bar_container"
 import VideoRow from "./video_row"
 import { useState, useEffect } from "react"
 
-export const Search = ({ currentUser, videos, fetchVideos, searchTerm }) => {
+export const Search = ({ currentUser, videos, fetchVideos, history }) => {
 
   const [filteredVideos, setFilteredVideos] = useState([]);
   const [parsedSearchTerm, setParsedSearchTerm] = useState([]);
+  let searchTerm2 = history.location.pathname.slice(9)
 
   useEffect(() => {
     fetchVideos();
@@ -15,22 +16,14 @@ export const Search = ({ currentUser, videos, fetchVideos, searchTerm }) => {
 
   useEffect(() => {
     if (videos) {
-      // setFilteredVideos((filteredVideos) => [
-      //   ...filteredVideos,
-      //   ...videos,
-      // ]);
-      // parse()
       filterVideos();
     }
   }, [videos]);
 
-  // useEffect(() => {
-  //   filterVideos()
-  // }, [parsedSearchTerm])
 
   function parse(){
       let splitSearchTerm;
-      let slicedSearchTerm = searchTerm.slice(9)
+      let slicedSearchTerm = searchTerm2.toLowerCase()
       splitSearchTerm = slicedSearchTerm.split(" ")
       setParsedSearchTerm((parsedSearchTerm) => [...parsedSearchTerm, ...splitSearchTerm])
   }
@@ -41,10 +34,12 @@ export const Search = ({ currentUser, videos, fetchVideos, searchTerm }) => {
       console.log('parsedSearchTerm', parsedSearchTerm)
 
       parsedSearchTerm.forEach(term => {
-        filtVids = videos.filter(video => 
-          video.title.includes(term) ||
-          video.description.includes(term) ||
-          video.username.includes(term))
+        filtVids = videos.filter(
+          (video) =>
+            video.title.toLowerCase().includes(term) ||
+            video.description.toLowerCase().includes(term) ||
+            video.username.toLowerCase().includes(term)
+        );
 
         filtVids.forEach(video => 
           {if (!filteredVids.includes(video)){
@@ -52,9 +47,7 @@ export const Search = ({ currentUser, videos, fetchVideos, searchTerm }) => {
           }})
       })
           
-      console.log('filtVids', filtVids);
-      console.log('filteredVids', filteredVids)
-      // setFilteredVideos((filteredVids) => [...filteredVids]);      
+      setFilteredVideos((filteredVideos) => [...filteredVideos, ...filteredVids]);      
   }
 
   if (filteredVideos === []) {
@@ -62,7 +55,7 @@ export const Search = ({ currentUser, videos, fetchVideos, searchTerm }) => {
   } else {
     return (
       <div>
-        {/* {console.log('return', filteredVideos)} */}
+        {console.log('return', filteredVideos)}
         <NavBarContainer></NavBarContainer>
       </div>
     );
