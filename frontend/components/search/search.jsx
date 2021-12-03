@@ -20,6 +20,7 @@ export const Search = ({ currentUser, videos, fetchVideos, searchTerm }) => {
       //   ...videos,
       // ]);
       // parse()
+      filterVideos();
     }
   }, [videos]);
 
@@ -34,27 +35,33 @@ export const Search = ({ currentUser, videos, fetchVideos, searchTerm }) => {
       setParsedSearchTerm((parsedSearchTerm) => [...parsedSearchTerm, ...splitSearchTerm])
   }
 
-  // function filterVideos() {
-  //     let filteredVids = [];
-  //     let filtVids;
-      
-  //     parsedSearchTerm.forEach(term => {
-  //       filtVids = videos.filter(video => 
-  //         video.title.includes(term) ||
-  //         video.description.includes(term) ||
-  //         video.uploader.username.includes(term))
-  //     })
+  function filterVideos() {
+      let filteredVids = [];
+      let filtVids;
+      console.log('parsedSearchTerm', parsedSearchTerm)
 
-  //     filteredVids.push(filtVids)
-  //     setFilteredVideos((filteredVids) => [...filteredVids]);      
-  // }
+      parsedSearchTerm.forEach(term => {
+        filtVids = videos.filter(video => 
+          video.title.includes(term) ||
+          video.description.includes(term) ||
+          video.username.includes(term))
+
+        filtVids.forEach(video => 
+          {if (!filteredVids.includes(video)){
+            filteredVids.push(video)
+          }})
+      })
+          
+      console.log('filtVids', filtVids);
+      console.log('filteredVids', filteredVids)
+      // setFilteredVideos((filteredVids) => [...filteredVids]);      
+  }
 
   if (filteredVideos === []) {
     return null;
   } else {
     return (
       <div>
-        {console.log('parsed search term', parsedSearchTerm)}
         {/* {console.log('return', filteredVideos)} */}
         <NavBarContainer></NavBarContainer>
       </div>
