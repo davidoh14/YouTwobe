@@ -1,9 +1,9 @@
 import React from "react"
 import NavBarContainer from "../nav/nav_bar_container"
-import VideoRow from "./video_row"
+import VideoRowContainer from "./video_row_container"
 import { useState, useEffect } from "react"
 
-export const Search = ({ currentUser, videos, fetchVideos, history }) => {
+export const Search = ({ videos, fetchVideos, history }) => {
 
   const [filteredVideos, setFilteredVideos] = useState([]);
   const [parsedSearchTerm, setParsedSearchTerm] = useState([]);
@@ -31,7 +31,6 @@ export const Search = ({ currentUser, videos, fetchVideos, history }) => {
   function filterVideos() {
       let filteredVids = [];
       let filtVids;
-      console.log('parsedSearchTerm', parsedSearchTerm)
 
       parsedSearchTerm.forEach(term => {
         filtVids = videos.filter(
@@ -44,6 +43,7 @@ export const Search = ({ currentUser, videos, fetchVideos, history }) => {
         filtVids.forEach(video => 
           {if (!filteredVids.includes(video)){
             filteredVids.push(video)
+            console.log('filter')
           }})
       })
           
@@ -56,7 +56,12 @@ export const Search = ({ currentUser, videos, fetchVideos, history }) => {
     return (
       <div>
         {console.log('return', filteredVideos)}
-        <NavBarContainer></NavBarContainer>
+        {filteredVideos.map(video =>
+          <div key={video.id}>
+            <VideoRowContainer video={video}/>
+          </div> 
+        )}
+        <NavBarContainer inheritedSearchTerm={searchTerm2}></NavBarContainer>
       </div>
     );
   }

@@ -12,9 +12,14 @@ import { InputBase } from "@mui/material";
 import { useState } from "react";
 
 
-const NavBar = ({ currentUser, logout, classes, history }) => {
+const NavBar = ({ currentUser, logout, classes, history, inheritedSearchTerm }) => {
 
   const [searchTerm, setSearchTerm] = useState("");
+
+  // useEffect(() => {
+  //   setSearchTerm(inheritedSearchTerm)
+  //   console.log(inheritedSearchTerm, searchTerm)
+  // }, [])
 
   const display = currentUser ? (
     <div>
@@ -87,6 +92,7 @@ const NavBar = ({ currentUser, logout, classes, history }) => {
                 className={classes.searchBar}
                 placeholder="Search"
                 onChange={(e) => setSearchTerm(e.currentTarget.value)}
+                // value={searchTerm}
                 sx={{
                   color: "white",
                   width: "95%",

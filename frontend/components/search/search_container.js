@@ -5,7 +5,6 @@ import { fetchVideos } from "../../actions/video_actions";
 
 const mSTP = ({ entities, session }, ownProps) => ({
   videos: Object.values(entities.videos),
-  currentUser: entities.users[session.id],
 });
 
 const mDTP = (dispatch) => ({
