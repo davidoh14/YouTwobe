@@ -16,7 +16,6 @@ class CommentForm extends React.Component {
   }
 
   handleSubmit(e) {
-    console.log(this.state.video_id)
     e.preventDefault();
     this.props
       .composeComment(this.state)

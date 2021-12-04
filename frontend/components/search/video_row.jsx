@@ -3,7 +3,7 @@ import React from "react";
 
 function VideoRow({ video, history }) {
     return (
-        <div className="vid-row"
+        <button className="vid-row"
             onClick={() => history.push(`/watch/${video.id}`)}
         >
             <img 
@@ -19,7 +19,7 @@ function VideoRow({ video, history }) {
                 </div>
                 <div className="description">{video.description}</div>
             </div>
-        </div>
+        </button>
     );
 }
 

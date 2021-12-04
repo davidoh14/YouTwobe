@@ -7,7 +7,7 @@ export const Search = ({ videos, fetchVideos, history }) => {
 
   const [filteredVideos, setFilteredVideos] = useState([]);
   const [parsedSearchTerm, setParsedSearchTerm] = useState([]);
-  let searchTerm2 = history.location.pathname.slice(9)
+  let searchTerm = history.location.pathname.slice(9)
 
   useEffect(() => {
     fetchVideos();
@@ -16,38 +16,46 @@ export const Search = ({ videos, fetchVideos, history }) => {
 
   useEffect(() => {
     if (videos) {
+      parse();
       filterVideos();
     }
   }, [videos]);
 
+  useEffect(() => {
+    filterVideos()
+  }, [parsedSearchTerm]);
 
   function parse(){
-      let splitSearchTerm;
-      let slicedSearchTerm = searchTerm2.toLowerCase()
-      splitSearchTerm = slicedSearchTerm.split(" ")
-      setParsedSearchTerm((parsedSearchTerm) => [...parsedSearchTerm, ...splitSearchTerm])
+      let noSpaceSplitSearchTerm = [];
+      let slicedSearchTerm = searchTerm.toLowerCase().trim();
+      let splitSearchTerm = slicedSearchTerm.split(" ");
+      
+      splitSearchTerm.forEach(term => term !== " " || term !== "" ? noSpaceSplitSearchTerm.push(term) : null) 
+      console.log('spit', noSpaceSplitSearchTerm)
+      setParsedSearchTerm(() => [...noSpaceSplitSearchTerm])
   }
 
   function filterVideos() {
-      let filteredVids = [];
-      let filtVids;
+      setFilteredVideos(() => [])
+      let finalResults = [];
+      let firstFilter;
+      
+      console.log('parsed', parsedSearchTerm)
 
       parsedSearchTerm.forEach(term => {
-        filtVids = videos.filter(
+        firstFilter = videos.filter(
           (video) =>
             video.title.toLowerCase().includes(term) ||
             video.description.toLowerCase().includes(term) ||
             video.username.toLowerCase().includes(term)
         );
 
-        filtVids.forEach(video => 
-          {if (!filteredVids.includes(video)){
-            filteredVids.push(video)
-            console.log('filter')
+        firstFilter.forEach(video => 
+          {if (!finalResults.includes(video)){
+            finalResults.push(video)
           }})
       })
-          
-      setFilteredVideos((filteredVideos) => [...filteredVideos, ...filteredVids]);      
+      setFilteredVideos(() => [...finalResults]);   
   }
 
   if (filteredVideos === []) {
@@ -55,13 +63,12 @@ export const Search = ({ videos, fetchVideos, history }) => {
   } else {
     return (
       <div>
-        {console.log('return', filteredVideos)}
         {filteredVideos.map(video =>
           <div key={video.id}>
             <VideoRowContainer video={video}/>
           </div> 
         )}
-        <NavBarContainer inheritedSearchTerm={searchTerm2}></NavBarContainer>
+        <NavBarContainer inheritedSearchTerm={searchTerm}></NavBarContainer>
       </div>
     );
   }

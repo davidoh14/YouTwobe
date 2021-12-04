@@ -14,13 +14,15 @@ import { useState } from "react";
 
 const NavBar = ({ currentUser, logout, classes, history, inheritedSearchTerm }) => {
 
-  const [searchTerm, setSearchTerm] = useState("");
+  
+  let pathName = history.location.pathname;
+  let searchBarValue = "";
+  if (pathName.includes('/results/')) {
+    searchBarValue = inheritedSearchTerm
+  }
 
-  // useEffect(() => {
-  //   setSearchTerm(inheritedSearchTerm)
-  //   console.log(inheritedSearchTerm, searchTerm)
-  // }, [])
-
+  const [searchTerm, setSearchTerm] = useState(searchBarValue);
+  
   const display = currentUser ? (
     <div>
       <Button
@@ -92,16 +94,15 @@ const NavBar = ({ currentUser, logout, classes, history, inheritedSearchTerm }) 
                 className={classes.searchBar}
                 placeholder="Search"
                 onChange={(e) => setSearchTerm(e.currentTarget.value)}
-                // value={searchTerm}
+                value={searchTerm}
                 sx={{
                   color: "white",
                   width: "95%",
                 }}
               />
-              <button type="button" className={classes.searchButtonWrapper}>
+              <button className={classes.searchButtonWrapper}>
                 <SearchIcon
                   className={classes.searchIcon}
-                  onClick={() => searchFormHandler()}
                   sx={{
                     width: "30px",
                   }}
