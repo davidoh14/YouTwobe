@@ -27,11 +27,9 @@ export const Search = ({ videos, fetchVideos, history }) => {
 
   function parse(){
       let noSpaceSplitSearchTerm = [];
-      let slicedSearchTerm = searchTerm.toLowerCase().trim();
-      let splitSearchTerm = slicedSearchTerm.split(" ");
+      let splitSearchTerm = searchTerm.toLowerCase().trim().split(" ");
       
-      splitSearchTerm.forEach(term => term !== " " || term !== "" ? noSpaceSplitSearchTerm.push(term) : null) 
-      console.log('spit', noSpaceSplitSearchTerm)
+      splitSearchTerm.forEach(term => term ? noSpaceSplitSearchTerm.push(term) : null) 
       setParsedSearchTerm(() => [...noSpaceSplitSearchTerm])
   }
 
@@ -40,8 +38,6 @@ export const Search = ({ videos, fetchVideos, history }) => {
       let finalResults = [];
       let firstFilter;
       
-      console.log('parsed', parsedSearchTerm)
-
       parsedSearchTerm.forEach(term => {
         firstFilter = videos.filter(
           (video) =>
