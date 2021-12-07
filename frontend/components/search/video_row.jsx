@@ -14,9 +14,14 @@ function VideoRow({ video, history }) {
         <div className="info">
           <div className="title">{video.title}</div>
           <div className="views-and-date">9.1M views • 1 year ago </div>
-          <div className="avatar-and-uploader">
-            <Avatar className="avatar"></Avatar>
-            <div className="uploader">{video.uploader}</div>
+          <div className="avatar-and-username">
+            <Avatar className="avatar"
+                sx={{
+                    width: "30px",
+                    height: "30px",
+                }}
+            ></Avatar>
+            <div className="username">{video.username}</div>
           </div>
           <div className="description">{video.description}</div>
         </div>
