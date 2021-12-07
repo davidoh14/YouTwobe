@@ -13,7 +13,6 @@ import { useState } from "react";
 
 
 const NavBar = ({ currentUser, logout, classes, history, inheritedSearchTerm }) => {
-
   
   let pathName = history.location.pathname;
   let searchBarValue = "";
@@ -100,7 +99,7 @@ const NavBar = ({ currentUser, logout, classes, history, inheritedSearchTerm }) 
                   width: "95%",
                 }}
               />
-              <button className={classes.searchButtonWrapper}>
+              <button type='button' className={classes.searchButtonWrapper}>
                 <SearchIcon
                   className={classes.searchIcon}
                   sx={{

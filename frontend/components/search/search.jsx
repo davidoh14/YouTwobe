@@ -58,7 +58,8 @@ export const Search = ({ videos, fetchVideos, history }) => {
     return null;
   } else {
     return (
-      <div>
+      <div className="search-wrapper">
+        <div className="nav-bar-div"></div>
         {filteredVideos.map(video =>
           <div key={video.id}>
             <VideoRowContainer video={video}/>

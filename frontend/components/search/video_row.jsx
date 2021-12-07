@@ -1,25 +1,26 @@
 import React from "react";
+import { Avatar } from "@mui/material";
 
 
 function VideoRow({ video, history }) {
     return (
-        <button className="vid-row"
-            onClick={() => history.push(`/watch/${video.id}`)}
-        >
-            <img 
-                className="vid-row-thumbnail" 
-                src={video.thumbnail}    
-            ></img>
-            <div className="vid-row-info">
-                <div className="vid-row-title">{video.title}</div>
-                <div className="vid-row-views-and-date"></div>
-                <div className="vid-row-avatar-and-uploader">
-                    <div className="avatar"></div>
-                    <div className="uploader">{video.uploader}</div>
-                </div>
-                <div className="description">{video.description}</div>
-            </div>
-        </button>
+      <button
+        className="vid-row"
+        onClick={() => history.push(`/watch/${video.id}`)}
+      >
+        <div className="thumbnail-wrapper">
+          <img className="thumbnail" src={video.thumbnail}></img>
+        </div>
+        <div className="info">
+          <div className="title">{video.title}</div>
+          <div className="views-and-date">9.1M views • 1 year ago </div>
+          <div className="avatar-and-uploader">
+            <Avatar className="avatar"></Avatar>
+            <div className="uploader">{video.uploader}</div>
+          </div>
+          <div className="description">{video.description}</div>
+        </div>
+      </button>
     );
 }
 

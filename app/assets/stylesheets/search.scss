@@ -1,0 +1,49 @@
+.nav-bar-div {
+    height: 64px
+}
+
+.search-wrapper {
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.vid-row {
+    display: flex;
+    margin-top: 20px;
+
+    .thumbnail-wrapper {
+        width: 360px;
+        height: 202px;  
+    }
+
+    .thumbnail {
+        width: 100%;
+        height: auto;
+    }
+
+    .info{
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        margin-left: 15px;
+
+        .title {
+            font-size: 20px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+
+        .views-and-date {
+            color: grey;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        
+    }
+}
+
+
+
+
