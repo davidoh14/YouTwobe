@@ -15,11 +15,15 @@
     .thumbnail-wrapper {
         width: 360px;
         height: 202px;  
+        position: relative;
+        overflow: hidden;
+        background-color: black;
     }
 
     .thumbnail {
-        width: 100%;
-        height: auto;
+        width: auto;
+        height: 100%;
+        object-fit: contain;
     }
 
     .info{
