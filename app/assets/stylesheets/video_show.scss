@@ -5,15 +5,24 @@
     justify-content: center;
 }
 
-.player-and-comments {
-    width: 69vw;
-}
 
 .show-video-wrapper {
-    display: block;
-    width: 100%;
-    // height: 720px;
+    width: 69vw;
+    height: calc((69vw * 9) / 16);
 }
+
+.show-video {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: black;
+    height: 100%;
+    width: 100%;
+}
+
+
+
 
 .show-recommendations {
     display: flex;

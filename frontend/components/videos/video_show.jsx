@@ -26,16 +26,16 @@ class VideoShow extends React.Component {
         <div className="show-body">
           <div className="player-and-comments">
             <div className="show-video-wrapper">
-              <ReactPlayer
-                className="show-video"
-                url={video.video}
-                height='auto'
-                width='100%'
-                // url={window.squirrelURL}
-                muted={false}
-                playing={true}
-                controls
-              />
+              <div className='show-video'>
+                <ReactPlayer
+                  url={video.video}
+                  height='100%'
+                  width='auto'
+                  muted={false}
+                  playing={true}
+                  controls
+                />
+              </div>
             </div>
             <div className="show-info-and-com">
               <div className="show-info">
