@@ -97,9 +97,10 @@ const NavBar = ({ currentUser, logout, classes, history, inheritedSearchTerm }) 
                 sx={{
                   color: "white",
                   width: "95%",
+                  height: "40px"
                 }}
               />
-              <button type='button' className={classes.searchButtonWrapper}>
+              <button type='button' onClick={() => searchFormHandler()} className={classes.searchButtonWrapper}>
                 <SearchIcon
                   className={classes.searchIcon}
                   sx={{
