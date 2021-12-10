@@ -1,10 +1,11 @@
 import React from "react";
 import VideoCallOutlinedIcon from "@mui/icons-material/VideoCallOutlined";
-import MenuSharpIcon from "@mui/icons-material/MenuSharp";
 import { AppBar, Toolbar } from "@mui/material";
 import { Button } from "@mui/material";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import SearchIcon from "@mui/icons-material/Search";
 import { InputBase } from "@mui/material";
 import { useState } from "react";
@@ -72,7 +73,6 @@ const NavBar = ({ currentUser, logout, classes, history, inheritedSearchTerm }) 
           sx={{ minHeight: "60px", maxHeight: "60px" }}
         >
           <div className={classes.toolbarLeft}>
-            <MenuSharpIcon className={classes.navBarButton} />
             <Button className={classes.logo} onClick={() => history.push("/")}>
               <img
                 src={window.YouTubeIconURL}
@@ -116,7 +116,12 @@ const NavBar = ({ currentUser, logout, classes, history, inheritedSearchTerm }) 
               className={classes.toolbarRightIcon}
               onClick={() => history.push("/upload")}
             />
-
+            <a href="https://www.linkedin.com/in/david-oh-790071123/">
+              <LinkedInIcon className={classes.toolbarRightIcon} />
+            </a>
+            <a href="https://github.com/davidoh14/YouTwobe">
+              <GitHubIcon className={classes.toolbarRightIcon} />
+            </a>
             {display}
           </div>
         </Toolbar>
