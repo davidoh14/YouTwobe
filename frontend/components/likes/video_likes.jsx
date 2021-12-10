@@ -18,12 +18,10 @@ function VideoLikes({ video, likes, currentUserId, fetchLike, fetchLikes, create
         if (!mounted.current) {
             fetchLikes();
             mounted.current = true;
-            console.log('if')
         } else {
             findCurrentLike();
             likeHandler();
             filterLikesDislikes();
-            console.log('else')
         } 
     }, [likes]);
     
@@ -35,8 +33,6 @@ function VideoLikes({ video, likes, currentUserId, fetchLike, fetchLikes, create
         let filteredLikes = likes.find((like) =>
             like.likerId === currentUserId && like.likableId === video.id)
         setCurrentLike(filteredLikes);
-
-        console.log(currentLike, 'filter');
     };
 
     function filterLikesDislikes(){

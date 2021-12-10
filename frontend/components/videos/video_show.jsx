@@ -10,12 +10,10 @@ import VideoLikesContainer from "../likes/video_likes_container"
 
 class VideoShow extends React.Component {
   componentDidMount() {
-    console.log('mount')
     this.props.fetchVideo(this.props.videoId);
   }
 
   render() {
-    console.log('render')
     if (!this.props.video) {
       return null;
     }
