@@ -1,25 +1,16 @@
 .index {
-    padding-top: 40px;
+    padding: 2em 0 0 4em;
     display: flex;
     justify-content: center;
     
     .video-index {
-        padding-bottom: 0px;
         width: 100%;
         display: flex;
         flex-wrap: wrap;
         background-size: cover;
-        // justify-content: center;
     }
-    
-    // .video-index {
-    //     display: grid;
-    //     grid-template-columns: repeat(autofit, minmax(400px, auto));
-    // }
 
     .video-index-item {
-        // border: 1px solid black;
-        // background-color: orange;
         margin: 10px;
     }
 }

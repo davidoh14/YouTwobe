@@ -10,10 +10,12 @@ import VideoLikesContainer from "../likes/video_likes_container"
 
 class VideoShow extends React.Component {
   componentDidMount() {
+    console.log('mount')
     this.props.fetchVideo(this.props.videoId);
   }
 
   render() {
+    console.log('render')
     if (!this.props.video) {
       return null;
     }
@@ -55,13 +57,13 @@ class VideoShow extends React.Component {
                       <div className="show-sub-count">18.7K subscribers</div>
                     </div>
                   </div>
-                  <Button
+                  {/* <Button
                     variant="contained"
                     sx={{
                       backgroundColor: "red",
                     }}>
                     SUBSCRIBE
-                  </Button>
+                  </Button> */}
                 </div>
                 <div className="show-description">{video.description}</div>
               </div>

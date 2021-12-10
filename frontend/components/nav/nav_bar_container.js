@@ -24,13 +24,13 @@ const useNavStyles = {
 
   toolbar: {
     color: "white",
-    backgroundColor: "rgba(32, 32, 32, 1)",
+    backgroundColor: "#212121",
     display: "flex",
     flexDirection: "row",
     maxHeight: "60px",
     alignItems: "center",
     justifyContent: "space-between",
-    zIndex: "100",
+    zIndex: "1",
   },
 
   toolbarLeft: {
