@@ -19,4 +19,4 @@ const mDTP = (dispatch) => {
     };
 };
 
-export default connect(mSTP, mDTP)(VideoLikes);
+export default withRouter(connect(mSTP, mDTP)(VideoLikes));

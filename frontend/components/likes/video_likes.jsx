@@ -6,7 +6,7 @@ import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 
 
-function VideoLikes({ video, likes, currentUserId, fetchLike, fetchLikes, createLike, updateLike, deleteLike }) {
+function VideoLikes({ video, likes, history, currentUserId, fetchLike, fetchLikes, createLike, updateLike, deleteLike }) {
 
     const [currentLike, setCurrentLike] = useState([]);
     const [likeCount, setLikeCount] = useState(0);
@@ -103,9 +103,15 @@ function VideoLikes({ video, likes, currentUserId, fetchLike, fetchLikes, create
         }
     }
 
+    function loggedInCheck() {
+        if (!currentUserId) {
+            history.push('/login')
+        }
+    }
+
     likeHandler();
     return (
-        <div className="show-likes">
+        <div className="show-likes" >
             <button className="show-like-button">
                 {like}
             </button>
