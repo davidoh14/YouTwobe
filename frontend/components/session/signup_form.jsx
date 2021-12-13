@@ -45,11 +45,6 @@ class SignUpForm extends React.Component {
                 value={this.state.firstname}
                 onChange={this.update("firstname")}
               />
-              {/* <TextField 
-                                type="text"
-                                value={this.state.firstname}
-                                onChange={this.update('firstname')}
-                            /> */}
             </div>
             <div>
               <TextField
@@ -59,11 +54,6 @@ class SignUpForm extends React.Component {
                 value={this.state.lastname}
                 onChange={this.update("lastname")}
               />
-              {/* <TextField 
-                                type="text"
-                                value={this.state.lastname}
-                                onChange={this.update('lastname')}
-                            /> */}
             </div>
             <div>
               <TextField
@@ -73,11 +63,6 @@ class SignUpForm extends React.Component {
                 value={this.state.username}
                 onChange={this.update("username")}
               />
-              {/* <TextField 
-                                type="text"
-                                value={this.state.username}
-                                onChange={this.update('username')}
-                            /> */}
             </div>
             <div>
               <TextField
@@ -87,11 +72,6 @@ class SignUpForm extends React.Component {
                 value={this.state.email}
                 onChange={this.update("email")}
               />
-              {/* <TextField 
-                                type="email"
-                                value={this.state.email}
-                                onChange={this.update('email')}
-                            /> */}
             </div>
             <div>
               <TextField
@@ -102,11 +82,6 @@ class SignUpForm extends React.Component {
                 value={this.state.password}
                 onChange={this.update("password")}
               />
-              {/* <TextField 
-                                type="password"
-                                value={this.state.password}
-                                onChange={this.update('password')}
-                            /> */}
             </div>
             <Button
               className="signup-button"

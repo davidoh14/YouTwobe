@@ -7,7 +7,6 @@ class LoginForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      //   username: "",
       email: "",
       password: "",
     };
@@ -56,12 +55,7 @@ class LoginForm extends React.Component {
                 onChange={this.update("email")}
               />
             </div>
-            {/* <input
-                type="email"
-                placeholder='Email'
-                value={this.state.email}
-                onChange={this.update("email")}
-              /> */}
+
             <div className="login-password">
               <TextField
                 id="outlined-password-input"
@@ -72,12 +66,6 @@ class LoginForm extends React.Component {
                 onChange={this.update("password")}
               />
             </div>
-            {/* <input
-                placeholder='Password'
-                type="password"
-                value={this.state.password}
-                onChange={this.update("password")}
-              /> */}
 
             <div className="login-buttons">
               <Button variant="contained" className="login-Button" onClick={this.handleSubmit}>Login</Button>

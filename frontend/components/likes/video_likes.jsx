@@ -111,7 +111,7 @@ function VideoLikes({ video, likes, history, currentUserId, fetchLike, fetchLike
 
     likeHandler();
     return (
-        <div className="show-likes" >
+        <div className="show-likes" onClick={() => loggedInCheck()}>
             <button className="show-like-button">
                 {like}
             </button>

@@ -12,14 +12,27 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 600px;
 }
 
 .upload-title, .upload-description{
-    padding: 10px;
+    width: 100%
 }
 
-.upload-thumbnail{
+.upload-video, .upload-thumbnail{
+    display: flex;
+    align-items: center;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+.upload-errors{
+    color: rgb(218, 0, 0);
+    margin: 10px;
+}
+
+.attachment-errors{
+    color: rgb(218, 0, 0);
+    margin: 10px;
 }
 

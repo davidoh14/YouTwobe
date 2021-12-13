@@ -54,7 +54,7 @@ class VideoUploadForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    if (!this.state.video) {
+    if (!this.state.video || !this.state.thumbnail)  {
       this.setState({
         attachmentErrors: "Please attach a video and thumbnail",
       });
@@ -68,8 +68,14 @@ class VideoUploadForm extends React.Component {
     formData.append("video[video]", this.state.video);
     formData.append("video[thumbnail]", this.state.thumbnail);
 
-    this.props.createVideo(formData);
+    this.props.createVideo(formData).then(video => this.props.history.push('/'));
   }
+
+  // componentDidUpdate(prevProps){
+  //   if (this.props.videos.length !== prevProps.videos.length) {
+  //     this.props.history.push('/')
+  //   }
+  // }
 
   render() {
     const preview = this.state.thumbnailUrl ? (
@@ -84,21 +90,19 @@ class VideoUploadForm extends React.Component {
             <div className="upload-title">
               <TextField
                 required
+                fullWidth
+                margin="normal"
                 id="filled-required"
                 label="Title:"
                 variant="filled"
                 value={this.state.title}
                 onChange={this.update("title")}
               />
-              {/* <input
-                                type='text'
-                                placeholder='Title:'
-                                value={this.state.title}
-                                onChange={this.update('title')}
-                            /> */}
             </div>
             <div className="upload-description">
               <TextField
+                fullWidth
+                margin="normal"
                 id="outlined-multiline-static"
                 label="Description"
                 multiline
@@ -106,13 +110,13 @@ class VideoUploadForm extends React.Component {
                 value={this.state.description}
                 onChange={this.update("description")}
               />
-
-              {/* <textarea
-                                placeholder='Description:'
-                                value={this.state.description}
-                                onChange={this.update('description')}
-                            /> */}
             </div>
+
+            <ul className="upload-errors">
+              {this.props.errors.map((error, i) => (
+                <li key={i}>{error}</li>
+              ))}
+            </ul>
 
             <button className="upload-video">
               <div>
@@ -125,8 +129,8 @@ class VideoUploadForm extends React.Component {
               <div className="upload-thumbnail">
                 Upload a thumbnail:
                 <input type="file" onChange={this.uploadThumbnail} />
-                {preview}
               </div>
+              <div>{preview}</div>
             </button>
             <div className="attachment-errors">
               {this.state.attachmentErrors}
@@ -136,12 +140,6 @@ class VideoUploadForm extends React.Component {
             </Button>
           </div>
         </div>
-
-        <ul>
-          {this.props.errors.map((error, i) => (
-            <li key={i}>{error}</li>
-          ))}
-        </ul>
       </div>
     );
   }

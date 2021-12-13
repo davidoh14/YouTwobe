@@ -12,10 +12,7 @@ class CommentIndex extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (
-      this.props.videoId !== prevProps.videoId 
-      // || this.props.comments.length !== prevProps.comments.length
-    ) {
+    if (this.props.videoId !== prevProps.videoId) {
       this.props.fetchAllComments(this.props.videoId);
     }
   }

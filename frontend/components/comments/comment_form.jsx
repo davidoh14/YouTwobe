@@ -57,18 +57,6 @@ class CommentForm extends React.Component {
                   onChange={this.update("body")}
                 />
               </label>
-              {/* <TextField
-                className="comment-form"
-                sx={{
-                  fontColor: "white",
-                  color: "white"
-                  // width: "1016px",
-                }}
-                variant="standard"
-                value={this.state.body}
-                placeholder={"Add a public comment..."}
-                onChange={this.update("body")}
-              /> */}
               <div className="comment-buttons">
                 <Button
                   sx={{
