@@ -68,7 +68,9 @@ class VideoUploadForm extends React.Component {
     formData.append("video[video]", this.state.video);
     formData.append("video[thumbnail]", this.state.thumbnail);
 
-    this.props.createVideo(formData).then(video => this.props.history.push('/'));
+    this.props.createVideo(formData).then(video => this.props.history.push('/'),
+    // errors =>  
+    );
   }
 
   // componentDidUpdate(prevProps){
