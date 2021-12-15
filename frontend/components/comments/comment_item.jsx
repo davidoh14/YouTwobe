@@ -29,12 +29,13 @@ const CommentItem = ({ comment, currentUserId, eraseComment }) => {
           <div className="commenter-and-date">
             <div className="commenter">{comment.user.username}</div>
             <div className="comment-date">
-              {/* {comment.updatedAt.toLocaleDateString("en-US", {
+              {comment.createdAt}
+              {/* {comment.createdAt.toLocaleDateString("en-US", {
                 day: "2-digit",
                 month: "2-digit",
                 year: "numeric",
               })} */}
-              2 days ago
+              {/* 2 days ago */}
             </div>
           </div>
           <div className="comment-and-delete">

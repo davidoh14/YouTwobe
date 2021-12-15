@@ -3,8 +3,6 @@ class Comment < ApplicationRecord
     validates :commenter_id, presence: true
     validates :video_id, presence: true
 
-    attr_reader :created_at
-
     belongs_to :video,
         foreign_key: :video_id,
         class_name: :Video

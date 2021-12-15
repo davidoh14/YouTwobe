@@ -95,16 +95,20 @@ const NavBar = ({ currentUser, logout, classes, history, inheritedSearchTerm }) 
                 sx={{
                   color: "white",
                   width: "95%",
-                  height: "40px"
+                  height: "40px",
                 }}
               />
-              <button type='button' onClick={() => searchFormHandler()} className={classes.searchButtonWrapper}>
+              <button
+                type="button"
+                onClick={() => searchFormHandler()}
+                className={classes.searchButtonWrapper}
+              >
                 <SearchIcon
                   className={classes.searchIcon}
                   sx={{
                     width: "30px",
                     fontSize: "30px",
-                    fontWeight: "normal"
+                    fontWeight: "normal",
                   }}
                 />
               </button>
@@ -116,12 +120,25 @@ const NavBar = ({ currentUser, logout, classes, history, inheritedSearchTerm }) 
               className={classes.toolbarRightIcon}
               onClick={() => history.push("/upload")}
             />
-            <a href="https://www.linkedin.com/in/david-oh-790071123/">
+            <button
+              // href="https://www.linkedin.com/in/david-oh-790071123/"
+              onClick={() =>
+                window.open(
+                  "https://www.linkedin.com/in/david-oh-790071123/",
+                  "_blank"
+                )
+              }
+            >
               <LinkedInIcon className={classes.toolbarRightIcon} />
-            </a>
-            <a href="https://github.com/davidoh14/YouTwobe">
+            </button>
+            <button
+              // href="https://github.com/davidoh14/YouTwobe"
+              onClick={() =>
+                window.open("https://github.com/davidoh14/YouTwobe", "_blank")
+              }
+            >
               <GitHubIcon className={classes.toolbarRightIcon} />
-            </a>
+            </button>
             {display}
           </div>
         </Toolbar>

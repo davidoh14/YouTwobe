@@ -111,6 +111,7 @@ const useNavStyles = {
   toolbarRightIcon: {
     marginRight: "10px",
     fontSize: "20px",
+    cursor: "pointer"
   },
 
   login: {
