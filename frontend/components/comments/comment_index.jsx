@@ -17,6 +17,22 @@ class CommentIndex extends React.Component {
     }
   }
 
+  sortAndMapComments(){
+    sortedComments = comments.sort(function(a, b) {
+      return a.createdAt - b.createdAt
+    })
+
+    sortedComments.map((comment) => (
+      <li key={comment.id}>
+        <CommentItem
+          comment={comment}
+          currentUserId={currentUserId}
+          eraseComment={eraseComment}
+        />
+      </li>
+    ));
+  }
+
   render() {
     const { comments, videoId, composeComment, currentUserId, eraseComment } = this.props;
 
@@ -50,15 +66,25 @@ class CommentIndex extends React.Component {
           </div>
 
           <ul>
-            {comments.map((comment) => (
-              <li key={comment.id}>
-                <CommentItem
-                  comment={comment}
-                  currentUserId={currentUserId}
-                  eraseComment={eraseComment}
-                />
-              </li>
-            ))}
+            {comments
+              .sort((a, b) => {
+                if (a.createdAt < b.createdAt) {
+                  return 1;
+                }
+                if (a.createdAt > b.createdAt) {
+                  return -1;
+                }
+                return 0;
+              })
+              .map((comment) => (
+                <li key={comment.id}>
+                  <CommentItem
+                    comment={comment}
+                    currentUserId={currentUserId}
+                    eraseComment={eraseComment}
+                  />
+                </li>
+              ))}
           </ul>
         </div>
       );
