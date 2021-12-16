@@ -11,6 +11,7 @@ const CommentItem = ({ comment, currentUserId, eraseComment }) => {
   //     () => reviseComment(commentId)
   // };
 
+
   const deleteComment =
     currentUserId === comment.commenterId ? (
       <Delete onClick={() => eraseComment(comment.id)} />
@@ -21,6 +22,25 @@ const CommentItem = ({ comment, currentUserId, eraseComment }) => {
 
   //             }/> : null;
 
+  function convertDate() {
+    const rawDate = Date.now() - new Date(comment.createdAt);
+
+    switch(true) {
+      case (rawDate < 3600000): // less than an hour
+        console.log(`${Math.round(rawDate / (1000 * 60))} minute(s) ago`);
+        return `${Math.round((rawDate/(1000 * 60)))} minute(s) ago`;
+      case (rawDate >= 3600000 && rawDate < 86400000): // less than a day
+        console.log(`${Math.round(rawDate / (1000 * 60 * 60))} hour(s) ago`);
+        return `${Math.round(rawDate / (1000 * 60 * 60))} hour(s) ago`; 
+      case (rawDate >= 86400000): // less than a week
+        console.log(`${Math.round(rawDate / (1000 * 60 * 60 * 24))} day(s) ago`);
+        return `${Math.round(rawDate / (1000 * 60 * 60 * 24))} day(s) ago`;
+      default:
+        console.log('default')
+        break;
+    }
+  }
+
   return (
     <div className="comment">
       <div className="av-and-comment">
@@ -29,13 +49,7 @@ const CommentItem = ({ comment, currentUserId, eraseComment }) => {
           <div className="commenter-and-date">
             <div className="commenter">{comment.user.username}</div>
             <div className="comment-date">
-              {Math.floor((Date.now() - new Date(comment.createdAt)) /
-                (1000 * 60 * 60 * 24))} days ago
-              {/* {comment.createdAt.toLocaleDateString("en-US", {
-                day: "2-digit",
-                month: "2-digit",
-                year: "numeric",
-              })} */}
+              {convertDate()} 
             </div>
           </div>
           <div className="comment-and-delete">
