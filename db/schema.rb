@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_18_004855) do
+ActiveRecord::Schema.define(version: 2021_12_15_234743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,8 +75,8 @@ ActiveRecord::Schema.define(version: 2021_11_18_004855) do
     t.string "description"
     t.integer "uploader_id", null: false
     t.integer "view_count"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.date "created_at", null: false
+    t.date "updated_at", null: false
     t.index ["uploader_id"], name: "index_videos_on_uploader_id"
   end
 
