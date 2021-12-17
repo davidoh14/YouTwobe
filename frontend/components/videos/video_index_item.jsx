@@ -7,6 +7,7 @@ class VideoIndexItem extends React.Component {
     super(props);
     this.watchVideo = this.watchVideo.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.convertDate = this.convertDate.bind(this);
   }
 
   watchVideo() {
@@ -15,6 +16,23 @@ class VideoIndexItem extends React.Component {
 
   handleDelete(videoId) {
     this.props.detachVideo(videoId);
+  }
+
+  convertDate() {
+    const rawDate = Date.now() - new Date(this.props.video.createdAt);
+
+    switch(true) {
+      case (rawDate < 3600000): // less than an hour
+        return `${Math.round((rawDate/(1000 * 60)))} minute(s) ago`;
+      case (rawDate >= 3600000 && rawDate < 86400000): // less than a day
+        return `${Math.floor(rawDate / (1000 * 60 * 60))} hour(s) ago`; 
+      case (rawDate >= 86400000 && rawDate < 604800000): // less than a week
+        return `${Math.floor(rawDate / (1000 * 60 * 60 * 24))} day(s) ago`;
+      case (rawDate >= 604800000 && rawDate < 2419200000): // less than a month
+        return `${Math.floor(rawDate / (1000 * 60 * 60 * 24 * 7))} weeks(s) ago`;
+      case (rawDate >= 2419200000): // months
+        return `${Math.floor(rawDate / (1000 * 60 * 60 * 24 * 7 * 4))} month(s) ago`;
+    }
   }
 
   render() {
@@ -39,7 +57,7 @@ class VideoIndexItem extends React.Component {
             </div>
             <div className="item-uploader">{video.username}</div>
             <p className="item-uploader">
-              {"264K"} • {"3 days ago"}
+              {"326K"} • {this.convertDate()}
             </p>
           </div>
           <button

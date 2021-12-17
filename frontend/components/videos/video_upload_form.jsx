@@ -117,14 +117,22 @@ class VideoUploadForm extends React.Component {
             <button className="upload-video">
               <div>
                 Upload a video file:
-                <input type="file" onChange={this.uploadVideo} />
+                <input
+                  type="file"
+                  accept="video/mp4,video/x-m4v,video/*"
+                  onChange={this.uploadVideo}
+                />
               </div>
             </button>
 
             <button>
               <div className="upload-thumbnail">
                 Upload a thumbnail:
-                <input type="file" onChange={this.uploadThumbnail} />
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={this.uploadThumbnail}
+                />
               </div>
               <div>{preview}</div>
             </button>
