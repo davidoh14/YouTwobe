@@ -20,6 +20,8 @@ class VideoShow extends React.Component {
 
     const { video } = this.props;
 
+    const createdAt = new Date(video.createdAt);
+
     return (
       <div className="show">
         <NavBarContainer />
@@ -41,7 +43,7 @@ class VideoShow extends React.Component {
               <div className="show-info">
                 <div className="show-title">{video.title}</div>
                 <div className="views-bar">
-                  <div className="show-views">326,377 views • Sep 16, 2021</div>
+                  <div className="show-views">326,377 views • {createdAt.toLocaleDateString("en-US", {month: 'short', day: 'numeric', year: 'numeric'})}</div>
                     <VideoLikesContainer video={video}/>
                 </div>
                 <div className="show-channel">

@@ -27,14 +27,11 @@ const CommentItem = ({ comment, currentUserId, eraseComment }) => {
 
     switch(true) {
       case (rawDate < 3600000): // less than an hour
-        console.log(`${Math.round(rawDate / (1000 * 60))} minute(s) ago`);
         return `${Math.round((rawDate/(1000 * 60)))} minute(s) ago`;
       case (rawDate >= 3600000 && rawDate < 86400000): // less than a day
-        console.log(`${Math.round(rawDate / (1000 * 60 * 60))} hour(s) ago`);
-        return `${Math.round(rawDate / (1000 * 60 * 60))} hour(s) ago`; 
+        return `${Math.floor(rawDate / (1000 * 60 * 60))} hour(s) ago`; 
       case (rawDate >= 86400000): // less than a week
-        console.log(`${Math.round(rawDate / (1000 * 60 * 60 * 24))} day(s) ago`);
-        return `${Math.round(rawDate / (1000 * 60 * 60 * 24))} day(s) ago`;
+        return `${Math.floor(rawDate / (1000 * 60 * 60 * 24))} day(s) ago`;
     }
   }
 
