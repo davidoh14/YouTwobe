@@ -13,9 +13,10 @@ class VideoUploadForm extends React.Component {
       videoUrl: "",
       thumbnail: null,
       thumbnailUrl: "",
-      attachmentErrors: "",
+      videoErrors: "",
+      thumbnailErrors: "",
     }),
-      (this.update = this.update.bind(this));
+    this.update = this.update.bind(this);
     this.uploadVideo = this.uploadVideo.bind(this);
     this.uploadThumbnail = this.uploadThumbnail.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,11 +29,26 @@ class VideoUploadForm extends React.Component {
   }
 
   uploadVideo(e) {
+    this.setState({
+      videoErrors: ""
+    });
+
     const file = e.currentTarget.files[0];
     const fileReader = new FileReader();
     fileReader.onloadend = () => {
       this.setState({ video: file, videoUrl: fileReader.result });
+
+      if (file.size > 25000000) {
+        this.setState({
+          videoErrors: "Please attach a video that is less than 25MB."
+        });
+      } else {
+        this.setState({
+          videoErrors: ""
+        })
+      }
     };
+
 
     if (file) {
       fileReader.readAsDataURL(file);
@@ -40,11 +56,22 @@ class VideoUploadForm extends React.Component {
   }
 
   uploadThumbnail(e) {
+
     const file = e.currentTarget.files[0];
     const fileReader = new FileReader();
     fileReader.onloadend = () => {
       this.setState({ thumbnail: file, thumbnailUrl: fileReader.result });
     };
+
+    if (file.size > 10000000) {
+      this.setState({
+        thumbnailErrors: "Please attach a thumbnail that is less than 10MB.",
+      });
+    } else {
+      this.setState({
+        thumbnailErrors: ""
+      })
+    }
 
     if (file) {
       fileReader.readAsDataURL(file);
@@ -54,10 +81,18 @@ class VideoUploadForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    if (!this.state.video || !this.state.thumbnail)  {
+    if (!this.state.video)  {
       this.setState({
-        attachmentErrors: "Please attach a video and thumbnail",
+        videoErrors: "Please attach a video",
       });
+      return;
+    } else if (!this.state.thumbnail) {
+      this.setState({
+        thumbnailErrors: "Please attach a thumbnail"
+      })
+    }
+
+    if (this.state.videoErrors !== "" || this.state.thumbnailErrors !== "") {
       return;
     }
 
@@ -137,7 +172,8 @@ class VideoUploadForm extends React.Component {
               <div>{preview}</div>
             </button>
             <div className="attachment-errors">
-              {this.state.attachmentErrors}
+              {this.state.videoErrors}
+              {this.state.thumbnailErrors}
             </div>
             <Button variant="contained" onClick={this.handleSubmit}>
               Upload Video
