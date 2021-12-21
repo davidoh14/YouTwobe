@@ -28,13 +28,14 @@ class CommentIndex extends React.Component {
           comment={comment}
           currentUserId={currentUserId}
           eraseComment={eraseComment}
+          reviseComment={reviseComment}
         />
       </li>
     ));
   }
 
   render() {
-    const { comments, videoId, composeComment, currentUserId, eraseComment } = this.props;
+    const { comments, videoId, composeComment, reviseComment, currentUserId, eraseComment } = this.props;
 
     if (comments) {
       if (comments.length === 0) {
@@ -82,6 +83,7 @@ class CommentIndex extends React.Component {
                     comment={comment}
                     currentUserId={currentUserId}
                     eraseComment={eraseComment}
+                    reviseComment={reviseComment}
                   />
                 </li>
               ))}

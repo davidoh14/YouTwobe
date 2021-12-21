@@ -3,6 +3,7 @@ import CommentIndex from "./comment_index";
 import { withRouter } from "react-router";
 import {
   composeComment,
+  reviseComment,
   fetchAllComments,
   eraseComment
 } from "../../actions/comment_actions";
@@ -18,6 +19,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => ({
   fetchAllComments: (videoId) => dispatch(fetchAllComments(videoId)),
   composeComment: (comment) => dispatch(composeComment(comment)),
+  reviseComment: (comment) => dispatch(reviseComment(comment)),
   eraseComment: (commentId) => dispatch(eraseComment(commentId)),
 });
 

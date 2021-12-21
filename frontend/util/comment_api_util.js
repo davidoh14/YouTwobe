@@ -22,7 +22,7 @@ export const postComment = (comment) => {
 
 export const patchComment = (comment) => {
   return $.ajax({
-    url: `/api/videos/${comment.videoId}/comments/${comment.id}`,
+    url: `/api/videos/${comment.video_id}/comments/${comment.id}`,
     method: "PATCH",
     data: { comment },
   });

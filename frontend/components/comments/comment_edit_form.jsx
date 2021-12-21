@@ -2,53 +2,40 @@ import React from "react";
 import { Button, TextField } from "@mui/material";
 import { Avatar } from "@mui/material";
 
-class CommentForm extends React.Component {
+class CommentEditForm extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      body: "",
-      video_id: this.props.videoId,
-    };
+        ...this.props.commentToEdit
+    }
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
     this.update = this.update.bind(this);
-    this.currentUserAndVideoCheck = this.currentUserAndVideoCheck.bind(this);
   }
 
-  currentUserAndVideoCheck() {
-    if (!this.props.currentUserId) {
-      this.props.history.push("/login");
-    } else {
-      this.setState({ video_id: this.props.videoId });
-    }
-  }
-  
   update(field) {
     return (e) => {
       this.setState({ [field]: e.currentTarget.value });
     };
   }
-  
+
   handleSubmit(e) {
     e.preventDefault();
 
-    this.props
-      .composeComment(this.state)
-      .then(this.setState({ body: "" }));
+    this.props.reviseComment(this.state).then(this.props.cancelEdit());
   }
 
   handleCancel(e) {
     e.preventDefault();
 
-    this.setState({ body: "" });
+    this.props.cancelEdit();
   }
 
-  
   render() {
     return (
-      <div onClick={this.currentUserAndVideoCheck}>
+      <div>
         <div className="add-comment">
           <Avatar className="comment-avatar" />
           <div className="comment-form-and-buttons">
@@ -78,7 +65,7 @@ class CommentForm extends React.Component {
                   variant="contained"
                   onClick={this.handleSubmit}
                 >
-                  COMMENT
+                  SAVE
                 </Button>
               </div>
             </form>
@@ -89,4 +76,4 @@ class CommentForm extends React.Component {
   }
 }
 
-export default CommentForm;
+export default CommentEditForm;

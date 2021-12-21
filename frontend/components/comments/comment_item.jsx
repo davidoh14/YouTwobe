@@ -1,24 +1,23 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Delete from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-// import { eraseComment } from "../../actions/comment_actions";
-import { reviseComment } from "../../actions/comment_actions";
 import { Avatar } from "@mui/material";
 import CommentForm from "./comment_form";
+import CommentEditForm from "./comment_edit_form";
 
-const CommentItem = ({ comment, currentUserId, eraseComment }) => {
+const CommentItem = ({ comment, currentUserId, eraseComment, reviseComment }) => {
   // handleEdit = (commentId) => {
   //     () => reviseComment(commentId)
   // };
 
-  const [editMode, setEditMode] = useState("off")
+  const [editMode, setEditMode] = useState(false)
 
   const deleteAndEdit =
     currentUserId === comment.commenterId ? (
       <div>
         <Delete onClick={() => eraseComment(comment.id)} />
-        <EditIcon onClick={() => setEditMode("on")} />
+        <EditIcon onClick={() => setEditMode(true)} />
       </div>
     ) : null;
 
@@ -42,7 +41,7 @@ const CommentItem = ({ comment, currentUserId, eraseComment }) => {
   let commentItemOrEdit; 
 
   function toggleCommentItemOrEdit() {
-    if (editMode === "off") {
+    if (editMode === false) {
       commentItemOrEdit = (
         <div className="comment">
           <div className="av-and-comment">
@@ -62,7 +61,13 @@ const CommentItem = ({ comment, currentUserId, eraseComment }) => {
       );
     } else {
       commentItemOrEdit = (
-        <CommentForm commentToEdit={commentToEdit}/>
+        <CommentEditForm
+          commentToEdit={comment}
+          reviseComment={reviseComment}
+          cancelEdit={() => setEditMode(false)}
+          currentUserId={currentUserId}
+          videoId={comment.videoId}
+        />
       );
     }
   }

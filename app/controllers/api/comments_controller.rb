@@ -32,7 +32,7 @@ class Api::CommentsController < ApplicationController
         
         
         if @comment
-            @comment.update
+            @comment.update(comment_params)
             render :show
         else
             render json: @comment.errors.full_messages, status: 422
