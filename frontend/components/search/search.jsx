@@ -7,7 +7,8 @@ export const Search = ({ videos, fetchVideos, history }) => {
 
   const [filteredVideos, setFilteredVideos] = useState([]);
   const [parsedSearchTerm, setParsedSearchTerm] = useState([]);
-  let searchTerm = history.location.pathname.slice(9)
+
+  let searchTerm = history.location.pathname.slice(9);
 
   useEffect(() => {
     fetchVideos();

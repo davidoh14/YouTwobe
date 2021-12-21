@@ -15,13 +15,6 @@ class CommentForm extends React.Component {
     this.currentUserAndVideoCheck = this.currentUserAndVideoCheck.bind(this);
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    this.props
-      .composeComment(this.state)
-      .then(this.setState({ body: "" }));
-  }
-
   currentUserAndVideoCheck() {
     if (!this.props.currentUserId) {
       this.props.history.push("/login");
@@ -29,16 +22,29 @@ class CommentForm extends React.Component {
       this.setState({ video_id: this.props.videoId });
     }
   }
-
+  
   update(field) {
     return (e) => {
       this.setState({ [field]: e.currentTarget.value });
     };
   }
+  
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props
+      .composeComment(this.state)
+      .then(this.setState({ body: "" }));
+  }
 
   handleCancel(e) {
     e.preventDefault();
     this.setState({ body: "" });
+  }
+
+  newOrEdit() {
+    if (this.props.commentToEdit) {
+      this.setState({ body: this.props.commentToEdit.body })
+    }
   }
 
   render() {

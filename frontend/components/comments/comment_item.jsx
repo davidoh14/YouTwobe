@@ -1,26 +1,26 @@
-import React from "react";
+import React, {useState} from "react";
 import Delete from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 // import { eraseComment } from "../../actions/comment_actions";
 import { reviseComment } from "../../actions/comment_actions";
 import { Avatar } from "@mui/material";
+import CommentForm from "./comment_form";
 
 const CommentItem = ({ comment, currentUserId, eraseComment }) => {
   // handleEdit = (commentId) => {
   //     () => reviseComment(commentId)
   // };
 
+  const [editMode, setEditMode] = useState("off")
 
-  const deleteComment =
+  const deleteAndEdit =
     currentUserId === comment.commenterId ? (
-      <Delete onClick={() => eraseComment(comment.id)} />
+      <div>
+        <Delete onClick={() => eraseComment(comment.id)} />
+        <EditIcon onClick={() => setEditMode("on")} />
+      </div>
     ) : null;
-
-  // const editButton = (currentUserId === comment.commenterId) ?
-  //             <EditIcon onClick={
-
-  //             }/> : null;
 
   function convertDate() {
     const rawDate = Date.now() - new Date(comment.createdAt);
@@ -39,26 +39,39 @@ const CommentItem = ({ comment, currentUserId, eraseComment }) => {
     }
   }
 
+  let commentItemOrEdit; 
 
-  return (
-    <div className="comment">
-      <div className="av-and-comment">
-        <Avatar>
-          {/* {comment.user.username[0]} */}
-        </Avatar>
-        <div className="comment-column">
-          <div className="commenter-and-date">
-            <div className="commenter">{comment.user.username}</div>
-            <div className="comment-date">
-              {convertDate()} 
+  function toggleCommentItemOrEdit() {
+    if (editMode === "off") {
+      commentItemOrEdit = (
+        <div className="comment">
+          <div className="av-and-comment">
+            <Avatar>{/* {comment.user.username[0]} */}</Avatar>
+            <div className="comment-column">
+              <div className="commenter-and-date">
+                <div className="commenter">{comment.user.username}</div>
+                <div className="comment-date">{convertDate()}</div>
+              </div>
+              <div className="comment-and-delete">
+                <div className="comment-body">{comment.body}</div>
+                <div className="delete-edit">{deleteAndEdit}</div>
+              </div>
             </div>
           </div>
-          <div className="comment-and-delete">
-            <div className="comment-body">{comment.body}</div>
-            <div className="delete-comment">{deleteComment}</div>
-          </div>
         </div>
-      </div>
+      );
+    } else {
+      commentItemOrEdit = (
+        <CommentForm commentToEdit={commentToEdit}/>
+      );
+    }
+  }
+
+  toggleCommentItemOrEdit();
+
+  return (
+    <div>
+      {commentItemOrEdit}
     </div>
   );
 };

@@ -48,8 +48,8 @@ export const composeComment = (comment) => (dispatch) => {
   );
 };
 
-export const reviseComment = (commentId) => (dispatch) => {
-  return patchComment(commentId).then((comment) =>
+export const reviseComment = (comment) => (dispatch) => {
+  return patchComment(comment).then((comment) =>
     dispatch(receiveComment(comment))
   );
 };

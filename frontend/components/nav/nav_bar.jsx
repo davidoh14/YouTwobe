@@ -13,13 +13,17 @@ import { useState } from "react";
 
 const NavBar = ({ currentUser, logout, classes, history, inheritedSearchTerm }) => {
   
-  let pathName = history.location.pathname;
-  let searchBarValue = "";
-  if (pathName.includes('/results/')) {
-    searchBarValue = inheritedSearchTerm
-  }
+  // let pathName = history.location.pathname;
+  // let searchBarValue = "";
 
-  const [searchTerm, setSearchTerm] = useState(searchBarValue);
+  // if (pathName.includes('/results/')) {
+  //   searchBarValue = inheritedSearchTerm
+  // }
+
+  // the nav bar component wouldn't re-render if the user navigates from a search results page to a video show,
+  // so the code above checks to see if the URL looks like a search results URL to mak
+
+  const [searchTerm, setSearchTerm] = useState(inheritedSearchTerm);
   
   const display = currentUser ? (
     <div>
@@ -121,7 +125,6 @@ const NavBar = ({ currentUser, logout, classes, history, inheritedSearchTerm }) 
               onClick={() => history.push("/upload")}
             />
             <button
-              // href="https://www.linkedin.com/in/david-oh-790071123/"
               onClick={() =>
                 window.open(
                   "https://www.linkedin.com/in/david-oh-790071123/",
@@ -132,7 +135,6 @@ const NavBar = ({ currentUser, logout, classes, history, inheritedSearchTerm }) 
               <LinkedInIcon className={classes.toolbarRightIcon} />
             </button>
             <button
-              // href="https://github.com/davidoh14/YouTwobe"
               onClick={() =>
                 window.open("https://github.com/davidoh14/YouTwobe", "_blank")
               }
