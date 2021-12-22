@@ -9,20 +9,61 @@ class CommentForm extends React.Component {
     this.state = {
       body: "",
       video_id: this.props.videoId,
+      commentButtons: false,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
-    this.update = this.update.bind(this);
-    this.currentUserAndVideoCheck = this.currentUserAndVideoCheck.bind(this);
+    this.currentUserCheck = this.currentUserCheck.bind(this);
   }
 
-  currentUserAndVideoCheck() {
+
+  currentUserCheck() {
     if (!this.props.currentUserId) {
       this.props.history.push("/login");
-    } else {
-      this.setState({ video_id: this.props.videoId });
     }
+  }
+
+  toggleCommentButtons() {
+    this.setState({ commentButtons: true })
+  }
+
+  showCommentButtons() {
+    return (
+      <div className="comment-buttons">
+        <Button
+          sx={{
+            color: "grey",
+          }}
+          onClick={this.handleCancel}
+        >
+          CANCEL
+        </Button>
+        
+        {this.state.body === "" ? (
+          <Button
+            sx={{
+              backgroundColor: "grey",
+            }}
+            variant="contained"
+            onClick={this.handleSubmit}
+            disabled
+          >
+            COMMENT
+          </Button>
+        ) : (
+          <Button
+            sx={{
+              backgroundColor: "grey",
+            }}
+            variant="contained"
+            onClick={this.handleSubmit}
+          >
+            COMMENT
+          </Button>
+        )}
+      </div>
+    );
   }
   
   update(field) {
@@ -36,19 +77,26 @@ class CommentForm extends React.Component {
 
     this.props
       .composeComment(this.state)
-      .then(this.setState({ body: "" }));
+      .then(() => this.setState({ 
+        body: "", 
+        commentButtons: false
+    }));
   }
-
+  
   handleCancel(e) {
     e.preventDefault();
-
-    this.setState({ body: "" });
+    
+    this.setState({
+      body: "",
+      commentButtons: false,
+    });
   }
 
   
   render() {
+
     return (
-      <div onClick={this.currentUserAndVideoCheck}>
+      <div onClick={this.currentUserCheck}>
         <div className="add-comment">
           <Avatar className="comment-avatar" />
           <div className="comment-form-and-buttons">
@@ -60,9 +108,11 @@ class CommentForm extends React.Component {
                   value={this.state.body}
                   placeholder={"Add a public comment..."}
                   onChange={this.update("body")}
+                  onClick={() => this.toggleCommentButtons()}
                 />
               </label>
-              <div className="comment-buttons">
+              {this.state.commentButtons ? this.showCommentButtons() : null}
+              {/* <div className="comment-buttons">
                 <Button
                   sx={{
                     color: "grey",
@@ -80,7 +130,7 @@ class CommentForm extends React.Component {
                 >
                   COMMENT
                 </Button>
-              </div>
+              </div> */}
             </form>
           </div>
         </div>

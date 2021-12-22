@@ -24,7 +24,7 @@ class CommentEditForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    this.props.reviseComment(this.state).then(this.props.cancelEdit());
+    this.props.reviseComment(this.state).then(() => this.props.cancelEdit());
   }
 
   handleCancel(e) {
@@ -34,6 +34,9 @@ class CommentEditForm extends React.Component {
   }
 
   render() {
+
+    console.log(window);
+
     return (
       <div>
         <div className="add-comment">
@@ -49,6 +52,14 @@ class CommentEditForm extends React.Component {
                   onChange={this.update("body")}
                 />
               </label>
+              
+                {this.props.errors ? 
+                    // <div className="comment-update-errors">
+                        console.log(this.props.errors[0])
+         
+                    : null
+                }
+
               <div className="comment-buttons">
                 <Button
                   sx={{
@@ -67,6 +78,7 @@ class CommentEditForm extends React.Component {
                 >
                   SAVE
                 </Button>
+            
               </div>
             </form>
           </div>

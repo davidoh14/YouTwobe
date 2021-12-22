@@ -7,9 +7,6 @@ import CommentForm from "./comment_form";
 import CommentEditForm from "./comment_edit_form";
 
 const CommentItem = ({ comment, currentUserId, eraseComment, reviseComment }) => {
-  // handleEdit = (commentId) => {
-  //     () => reviseComment(commentId)
-  // };
 
   const [editMode, setEditMode] = useState(false)
 
