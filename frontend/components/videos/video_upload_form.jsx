@@ -38,7 +38,7 @@ class VideoUploadForm extends React.Component {
     fileReader.onloadend = () => {
       this.setState({ video: file, videoUrl: fileReader.result });
 
-      if (file.size > 25000000) {
+      if (file.size > 26214400) {
         this.setState({
           videoErrors: "Please attach a video that is less than 25MB."
         });

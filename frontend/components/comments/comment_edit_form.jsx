@@ -66,6 +66,7 @@ class CommentEditForm extends React.Component {
                 >
                   CANCEL
                 </Button>
+                
                 {this.state.body === "" ? (
                   <Button
                     sx={{
@@ -88,15 +89,6 @@ class CommentEditForm extends React.Component {
                     SAVE
                   </Button>
                 )}
-                {/* <Button
-                  sx={{
-                    backgroundColor: "grey",
-                  }}
-                  variant="contained"
-                  onClick={this.handleSubmit}
-                >
-                  SAVE
-                </Button> */}
               </div>
             </form>
           </div>

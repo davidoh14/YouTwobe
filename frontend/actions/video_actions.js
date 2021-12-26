@@ -48,8 +48,8 @@ export const clearVideoErrors = () => {
 
 export const fetchVideos = () => (dispatch) => {
   return getVideos().then(
-    (videos) => dispatch(receiveAllVideos(videos))
-    // (errors) => dispatch(receiveVideoErrors(errors.responseJSON))
+    (videos) => dispatch(receiveAllVideos(videos)),
+    (errors) => dispatch(receiveVideoErrors(errors.responseJSON))
   );
 };
 

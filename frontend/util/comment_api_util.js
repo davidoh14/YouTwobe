@@ -5,13 +5,6 @@ export const getAllComments = (videoId) => {
   });
 };
 
-// export const getComment = ( commentId ) => {
-//     return $.ajax({
-//         url: `/api/videos/${videoId}/comments/${commentId}`,
-//         method: 'GET'
-//     })
-// };
-
 export const postComment = (comment) => {
   return $.ajax({
     url: `/api/videos/${comment.videoId}/comments/`,
