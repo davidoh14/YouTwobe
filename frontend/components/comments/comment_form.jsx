@@ -112,25 +112,6 @@ class CommentForm extends React.Component {
                 />
               </label>
               {this.state.commentButtons ? this.showCommentButtons() : null}
-              {/* <div className="comment-buttons">
-                <Button
-                  sx={{
-                    color: "grey",
-                  }}
-                  onClick={this.handleCancel}
-                >
-                  CANCEL
-                </Button>
-                <Button
-                  sx={{
-                    backgroundColor: "grey",
-                  }}
-                  variant="contained"
-                  onClick={this.handleSubmit}
-                >
-                  COMMENT
-                </Button>
-              </div> */}
             </form>
           </div>
         </div>

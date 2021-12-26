@@ -52,13 +52,10 @@ class CommentEditForm extends React.Component {
                   onChange={this.update("body")}
                 />
               </label>
-              
-                {this.props.errors ? 
-                    // <div className="comment-update-errors">
-                        console.log(this.props.errors[0])
-         
-                    : null
-                }
+
+              {this.props.errors ? 
+                  console.log(this.props.errors[0])
+                : null}
 
               <div className="comment-buttons">
                 <Button
@@ -69,7 +66,29 @@ class CommentEditForm extends React.Component {
                 >
                   CANCEL
                 </Button>
-                <Button
+                {this.state.body === "" ? (
+                  <Button
+                    sx={{
+                      backgroundColor: "grey",
+                    }}
+                    variant="contained"
+                    onClick={this.handleSubmit}
+                    disabled
+                  >
+                    SAVE
+                  </Button>
+                ) : (
+                  <Button
+                    sx={{
+                      backgroundColor: "grey",
+                    }}
+                    variant="contained"
+                    onClick={this.handleSubmit}
+                  >
+                    SAVE
+                  </Button>
+                )}
+                {/* <Button
                   sx={{
                     backgroundColor: "grey",
                   }}
@@ -77,8 +96,7 @@ class CommentEditForm extends React.Component {
                   onClick={this.handleSubmit}
                 >
                   SAVE
-                </Button>
-            
+                </Button> */}
               </div>
             </form>
           </div>
