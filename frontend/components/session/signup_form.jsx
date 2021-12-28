@@ -7,8 +7,8 @@ class SignUpForm extends React.Component {
   constructor(props) {
     super(props);
     (this.state = {
-      firstname: "",
-      lastname: "",
+      first_name: "",
+      last_name: "",
       username: "",
       email: "",
       password: "",
@@ -42,8 +42,8 @@ class SignUpForm extends React.Component {
                 required
                 label="First name"
                 variant="filled"
-                value={this.state.firstname}
-                onChange={this.update("firstname")}
+                value={this.state.first_name}
+                onChange={this.update("first_name")}
               />
             </div>
             <div>
@@ -51,8 +51,8 @@ class SignUpForm extends React.Component {
                 required
                 label="Last name"
                 variant="filled"
-                value={this.state.lastname}
-                onChange={this.update("lastname")}
+                value={this.state.last_name}
+                onChange={this.update("last_name")}
               />
             </div>
             <div>
@@ -93,7 +93,7 @@ class SignUpForm extends React.Component {
 
             <ul>
               {this.props.errors.map((error, i) => (
-                <li key={i}>{error}</li>
+                <li className="signup-errors" key={i}>{error}</li>
               ))}
             </ul>
 

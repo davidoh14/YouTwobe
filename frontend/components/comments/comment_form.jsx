@@ -17,7 +17,6 @@ class CommentForm extends React.Component {
     this.currentUserCheck = this.currentUserCheck.bind(this);
   }
 
-
   currentUserCheck() {
     if (!this.props.currentUserId) {
       this.props.history.push("/login");
@@ -91,7 +90,6 @@ class CommentForm extends React.Component {
       commentButtons: false,
     });
   }
-
   
   render() {
     return (
