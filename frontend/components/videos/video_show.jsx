@@ -2,7 +2,6 @@ import React from "react";
 import NavBarContainer from "../nav/nav_bar_container";
 import ReactPlayer from "react-player";
 import CommentIndexContainer from "../comments/comment_index_container";
-import { Avatar, Button } from "@mui/material";
 import ShowRecsContainer from "./show_recs_container";
 import VideoLikesContainer from "../likes/video_likes_container"
 import ColorAvatar from "../avatar/color_avatar"
@@ -32,7 +31,7 @@ class VideoShow extends React.Component {
                 <ReactPlayer
                   url={video.video}
                   height='100%'
-                  width='auto'
+                  width='100%'
                   muted={false}
                   playing={true}
                   controls

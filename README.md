@@ -1,7 +1,7 @@
 [Link](https://youtwobe3.herokuapp.com/)
 
 # Summary
-YouTwobe is a video-sharing, social platform that allows anyone to express their creativity, share a moment, or interact with other people's content. It allows users to upload and delete videos, as well as comments. 
+YouTwobe, a YouTube clone, is an online video-sharing website where users can view, search, and upload videos. It also enables users to further interact by posting, editing, and deleting comments.  
 
 # Technologies Used
 * React / Redux
