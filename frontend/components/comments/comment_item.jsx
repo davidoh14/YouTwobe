@@ -3,7 +3,7 @@ import Delete from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { Avatar } from "@mui/material";
 import CommentEditForm from "./comment_edit_form";
-import { red } from "@mui/material/colors";
+import ColorAvatar from '../avatar/color_avatar'
 
 const CommentItem = ({ comment, currentUserId, eraseComment, reviseComment }) => {
 
@@ -34,33 +34,6 @@ const CommentItem = ({ comment, currentUserId, eraseComment, reviseComment }) =>
     }
   }
 
-  function stringToColor(string) {
-    let hash = 0;
-    let i;
-
-    for (i = 0; i < string.length; i += 1) {
-      hash = string.charCodeAt(i) + ((hash << 5) - hash);
-    }
-
-    let color = "#";
-
-    for (i = 0; i < 2; i += 1) {
-      const value = (hash >> (i * 8)) & 0xff;
-      color += `00${value.toString(16)}`.substring(-2);
-    }
-
-    return color;
-  }
-
-  function stringAvatar(name) {
-    return {
-      sx: {
-        bgcolor: stringToColor(name),
-      },
-      children: `${name[0]}`,
-    };
-  }
-
   let commentItemOrEdit; 
 
   function toggleCommentItemOrEdit() {
@@ -68,7 +41,7 @@ const CommentItem = ({ comment, currentUserId, eraseComment, reviseComment }) =>
       commentItemOrEdit = (
         <div className="comment">
           <div className="av-and-comment">
-            <Avatar {...stringAvatar(`${comment.user.username}`)}/>
+            <ColorAvatar username={comment.user.username}/>
             <div className="comment-column">
               <div className="commenter-and-date">
                 <div className="commenter">{comment.user.username}</div>

@@ -5,7 +5,7 @@ import CommentIndexContainer from "../comments/comment_index_container";
 import { Avatar, Button } from "@mui/material";
 import ShowRecsContainer from "./show_recs_container";
 import VideoLikesContainer from "../likes/video_likes_container"
-
+import ColorAvatar from "../avatar/color_avatar"
 
 
 class VideoShow extends React.Component {
@@ -48,7 +48,7 @@ class VideoShow extends React.Component {
                 </div>
                 <div className="show-channel">
                   <div className="av-and-channel">
-                    <Avatar />
+                    <ColorAvatar username={video.username} />
                     <div className="show-subs">
                       <div className="show-channel-name">{video.username}</div>
                       <div className="show-sub-count">18.7K subscribers</div>

@@ -13,6 +13,7 @@ const mapStateToProps = (state, ownProps) => {
     comments: Object.values(state.entities.comments),
     videoId: ownProps.match.params.videoId,
     currentUserId: state.session.id,
+    currentUser: state.entities.users[state.session.id]
   };
 };
 

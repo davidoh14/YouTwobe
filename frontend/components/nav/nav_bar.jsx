@@ -9,6 +9,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import SearchIcon from "@mui/icons-material/Search";
 import { InputBase } from "@mui/material";
 import { useState } from "react";
+import ColorAvatar from "../avatar/color_avatar";
 
 
 const NavBar = ({ currentUser, logout, classes, history, inheritedSearchTerm }) => {
@@ -23,12 +24,12 @@ const NavBar = ({ currentUser, logout, classes, history, inheritedSearchTerm }) 
           color: "white",
         }}
       >
-        <AccountCircleIcon
-          sx={{
-            color: "white",
-            
-          }}
-        ></AccountCircleIcon> Logout
+        <ColorAvatar 
+          username={currentUser.username}
+        ></ColorAvatar>
+        <div className="logout-text">
+          Logout
+        </div>
       </Button>
     </div>
   ) : (

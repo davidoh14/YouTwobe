@@ -1,6 +1,7 @@
 import React from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Avatar } from "@mui/material";
+import ColorAvatar from "../avatar/color_avatar";
 
 class VideoIndexItem extends React.Component {
   constructor(props) {
@@ -49,7 +50,7 @@ class VideoIndexItem extends React.Component {
         />
         <div className="item-info">
           <div className="item-avatar">
-            <Avatar></Avatar>
+            <ColorAvatar username={video.username}/>
           </div>
           <div className="item-text">
             <div className="item-title" onClick={this.watchVideo}>
