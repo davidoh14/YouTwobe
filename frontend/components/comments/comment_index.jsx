@@ -17,6 +17,10 @@ class CommentIndex extends React.Component {
     }
   }
 
+  // Without this componentDidUpdate, the current comment index will appear on the index of subsequent 
+  // This is because the comment index of any subsequent-loaded videos will still be the same component that was previously loaded.
+  // A new fetch request must be performed in order to re-render with the video's respective comments. 
+
   sortAndMapComments(){
     sortedComments = comments.sort(function(a, b) {
       return a.createdAt - b.createdAt

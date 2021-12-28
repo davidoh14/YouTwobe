@@ -34,9 +34,6 @@ class CommentEditForm extends React.Component {
   }
 
   render() {
-
-    console.log(window);
-
     return (
       <div>
         <div className="add-comment">
@@ -52,10 +49,6 @@ class CommentEditForm extends React.Component {
                   onChange={this.update("body")}
                 />
               </label>
-
-              {this.props.errors ? 
-                  console.log(this.props.errors[0])
-                : null}
 
               <div className="comment-buttons">
                 <Button

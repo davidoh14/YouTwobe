@@ -94,7 +94,6 @@ class CommentForm extends React.Component {
 
   
   render() {
-
     return (
       <div onClick={this.currentUserCheck}>
         <div className="add-comment">

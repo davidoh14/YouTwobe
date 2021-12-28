@@ -48,7 +48,7 @@ const CommentItem = ({ comment, currentUserId, eraseComment, reviseComment }) =>
                 <div className="commenter">{comment.user.username}</div>
                 <div className="comment-date">{convertDate()}</div>
               </div>
-              <div className="comment-and-delete">
+              <div className="comment-and-buttons">
                 <div className="comment-body">{comment.body}</div>
                 <div className="delete-edit">{deleteAndEdit}</div>
               </div>
