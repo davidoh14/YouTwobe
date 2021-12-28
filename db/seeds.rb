@@ -24,7 +24,7 @@ user9 = User.create({username:"Justin Kuritzkes", password: "password", email:"j
 user10 = User.create({username:"Fearless Records", password: "password", email:"fearless@email.com", first_name:"Fearless", last_name:"Records"})
 user11 = User.create({username:"COLORS", password: "password", email:"colors@email.com", first_name: "COLORS", last_name: "Studio"})
 user12 = User.create({username:"Clairo", password: "password", email:"clairo@email.com", first_name: "Claire", last_name: "Cottrill"})
-user13 = User.create({username:"Demo" password: "password", email:"demo@email.com", first_name: "Demo", last_name: "User"})
+user13 = User.create({username:"Demo", password: "password", email:"demo@email.com", first_name: "Demo", last_name: "User"})
 
 
 vid1 = Video.new({
