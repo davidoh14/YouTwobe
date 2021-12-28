@@ -1,9 +1,7 @@
 import React, {useState, useEffect} from "react";
 import Delete from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Avatar } from "@mui/material";
-import CommentForm from "./comment_form";
 import CommentEditForm from "./comment_edit_form";
 
 const CommentItem = ({ comment, currentUserId, eraseComment, reviseComment }) => {
@@ -35,6 +33,7 @@ const CommentItem = ({ comment, currentUserId, eraseComment, reviseComment }) =>
     }
   }
 
+
   let commentItemOrEdit; 
 
   function toggleCommentItemOrEdit() {
@@ -42,7 +41,7 @@ const CommentItem = ({ comment, currentUserId, eraseComment, reviseComment }) =>
       commentItemOrEdit = (
         <div className="comment">
           <div className="av-and-comment">
-            <Avatar>{/* {comment.user.username[0]} */}</Avatar>
+            <Avatar ></Avatar>
             <div className="comment-column">
               <div className="commenter-and-date">
                 <div className="commenter">{comment.user.username}</div>

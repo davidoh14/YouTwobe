@@ -22,8 +22,10 @@ user7 = User.create({username:"Yuhuan",password:"password",email:"Yuhuan@email.c
 user8 = User.create({username:"ProZD", password:"password",email:"ProZD@email.com", first_name: "Pro", last_name: "ZD"})
 user9 = User.create({username:"Justin Kuritzkes", password: "password", email:"justin@email.com", first_name:"Justin", last_name:"Kuritzkes"})
 user10 = User.create({username:"Fearless Records", password: "password", email:"fearless@email.com", first_name:"Fearless", last_name:"Records"})
-user11 = User.create({username:"COLORS", password: "password", email:"colors@email.com"})
-user12 = User.create({username:"Clairo", password: "password", email:"clairo@email.com"})
+user11 = User.create({username:"COLORS", password: "password", email:"colors@email.com", first_name: "COLORS", last_name: "Studio"})
+user12 = User.create({username:"Clairo", password: "password", email:"clairo@email.com", first_name: "Claire", last_name: "Cottrill"})
+user13 = User.create({username:"Demo" password: "password", email:"demo@email.com", first_name: "Demo", last_name: "User"})
+
 
 vid1 = Video.new({
     title: "Pierce The Veil - Dive In", 
