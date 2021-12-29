@@ -93,9 +93,6 @@ function VideoUploadForm({ currentUser, videos, errors, createVideo, clearVideoE
   function handleSubmit(e) {
     e.preventDefault();
  
-    // if (this.state.videoErrors !== "" || this.state.thumbnailErrors !== "") {
-    //   return;
-    // }
 
     const formData = new FormData();
     formData.append("video[title]", title);
