@@ -1,4 +1,4 @@
-import VideoUploadForm from "./video_upload_form";
+import VideoUploadForm from "./video_upload_form_hooks";
 import { connect } from "react-redux";
 import { createVideo } from "../../actions/video_actions";
 import { clearVideoErrors } from "../../actions/video_actions";

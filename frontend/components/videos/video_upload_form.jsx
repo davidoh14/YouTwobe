@@ -16,13 +16,13 @@ class VideoUploadForm extends React.Component {
       thumbnailUrl: "",
       videoErrors: "",
       thumbnailErrors: "",
-      loading: false
+      submitButton: "disabled"
     }),
     this.update = this.update.bind(this);
     this.uploadVideo = this.uploadVideo.bind(this);
     this.uploadThumbnail = this.uploadThumbnail.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.submitOrLoading = this.submitOrLoading.bind(this);
+    this.submitButtonMode = this.submitButtonMode.bind(this);
   }
 
   update(field) {
@@ -58,6 +58,9 @@ class VideoUploadForm extends React.Component {
   }
 
   uploadThumbnail(e) {
+    this.setState({
+      thumbnailErrors: "",
+    });
 
     const file = e.currentTarget.files[0];
     const fileReader = new FileReader();
@@ -82,21 +85,10 @@ class VideoUploadForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
-    if (!this.state.video)  {
-      this.setState({
-        videoErrors: "Please attach a video",
-      });
-      return;
-    } else if (!this.state.thumbnail) {
-      this.setState({
-        thumbnailErrors: "Please attach a thumbnail"
-      })
-    }
-
-    if (this.state.videoErrors !== "" || this.state.thumbnailErrors !== "") {
-      return;
-    }
+ 
+    // if (this.state.videoErrors !== "" || this.state.thumbnailErrors !== "") {
+    //   return;
+    // }
 
     const formData = new FormData();
     formData.append("video[title]", this.state.title);
@@ -105,23 +97,29 @@ class VideoUploadForm extends React.Component {
     formData.append("video[video]", this.state.video);
     formData.append("video[thumbnail]", this.state.thumbnail);
 
-    this.setState({ loading: true })
+    this.setState({ submitButton: "loading" })
 
     this.props.createVideo(formData).then(
       (video) => this.props.history.push('/'),
-      (errors) => this.setState({ loading: false })
+      (errors) => this.setState({ submitButton: "enabled" })
     );
   }
 
-  submitOrLoading() {
-    if (this.state.loading === false) {
+  submitButtonMode() {
+    if (this.state.submitButton === "enabled") {
       return (
         <Button variant="contained" onClick={this.handleSubmit}>
           Upload Video
         </Button>
       );
-    } else {
+    } else if (this.state.submitButton === "loading"){
       return <CircularProgress/>;
+    } else if (this.state.submitButton === "disabled"){
+      return (
+        <Button variant="contained" disabled>
+          Upload Video
+        </Button>
+      )
     }
   }
 
@@ -130,9 +128,11 @@ class VideoUploadForm extends React.Component {
   }
 
   render() {
+
     const preview = this.state.thumbnailUrl ? (
       <img src={this.state.thumbnailUrl} />
     ) : null;
+    
     return (
       <div>
         <NavBarContainer />
@@ -141,11 +141,10 @@ class VideoUploadForm extends React.Component {
             <h1>Video Upload</h1>
             <div className="upload-title">
               <TextField
-                required
                 fullWidth
                 margin="normal"
-                id="filled-required"
-                label="Title:"
+                id="filled"
+                label="Title: (required)"
                 variant="filled"
                 value={this.state.title}
                 onChange={this.update("title")}
@@ -172,7 +171,7 @@ class VideoUploadForm extends React.Component {
 
             <button className="upload-video">
               <div>
-                Upload a video file:
+                Upload a video file (required): 
                 <input
                   type="file"
                   accept="video/mp4,video/x-m4v,video/*"
@@ -183,7 +182,7 @@ class VideoUploadForm extends React.Component {
 
             <button>
               <div className="upload-thumbnail">
-                Upload a thumbnail:
+                Upload a thumbnail (required):
                 <input
                   type="file"
                   accept="image/*"
@@ -196,7 +195,7 @@ class VideoUploadForm extends React.Component {
               {this.state.videoErrors}
               {this.state.thumbnailErrors}
             </div>
-            {this.submitOrLoading()}
+            {this.submitButtonMode()}
           </div>
         </div>
       </div>
