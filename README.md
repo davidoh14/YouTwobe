@@ -28,7 +28,7 @@ The comments section was an interesting challenge that exposed me to the intrica
         }
     }
 ```
-Another challenge along the same lines was that posting a comment after changing pages, would post that comment on the previous page. It's the same issue here where the parent component re-rendered, but the comment form hadn't yet. So I used the following code to have th comment form update it's state with the proper video foreign key.
+Another challenge along the same lines was that posting a comment after changing pages, would post that comment on the previous page. It's the same issue here where the parent component re-rendered, but the comment form hadn't yet. So I used the following code to have the comment form update it's state with the proper video foreign key.
 ```
     currentUserAndVideoCheck(){
         if (!this.props.currentUserId) {
@@ -38,9 +38,55 @@ Another challenge along the same lines was that posting a comment after changing
         }
     }
 ```
+I learned React Hooks, which made it easier to enable editing of comments through the useState hook to either display a comment, or the edit form of that comment. I passed down the method that changes the slice of state of the useState hook as a prop to the edit form component. That way, the separate edit form component can simply call this method to re-render into displaying the comment.
+```
+  const [editMode, setEditMode] = useState(false)
+ 
+  let commentItemOrEdit; 
+
+  function toggleCommentItemOrEdit() {
+    if (editMode === false) {
+      commentItemOrEdit = (
+        <div className="comment">
+          <div className="av-and-comment">
+            <ColorAvatar username={comment.user.username}/>
+            <div className="comment-column">
+              <div className="commenter-and-date">
+                <div className="commenter">{comment.user.username}</div>
+                <div className="comment-date">{convertDate()}</div>
+              </div>
+              <div className="comment-and-buttons">
+                <div className="comment-body">{comment.body}</div>
+                <div className="delete-edit">{deleteAndEdit}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    } else {
+      commentItemOrEdit = (
+        <CommentEditForm
+          commentToEdit={comment}
+          reviseComment={reviseComment}
+          cancelEdit={() => setEditMode(false)}
+          currentUserId={currentUserId}
+          videoId={comment.videoId}
+        />
+      );
+    }
+  }
+
+  toggleCommentItemOrEdit();
+
+  return (
+    <div>
+      {commentItemOrEdit}
+    </div>
+  );
+```
 
 ## Video Upload
-I added a completely new skill by learning how to upload and host files on an AWS server. There was much more code behind the scenes to enable this code to work, but the following is the code on the frontend to enable users to upload videos of their own: 
+Users can upload video and image files via AWS servers. It was interesting to learn the AWS-specific setup that enables the frontend file upload functions below.
 ```
     uploadVideo(e){
         const file = e.currentTarget.files[0];
