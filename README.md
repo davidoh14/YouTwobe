@@ -1,7 +1,7 @@
 [Link](https://youtwobe3.herokuapp.com/)
 
 # Summary
-YouTwobe, a YouTube clone, is an online video-sharing website where users can view, search, and upload videos. It also enables users to further interact by posting, editing, and deleting comments.  
+YouTwobe is a video-sharing, social platform that allows anyone to express their creativity, share a moment, or interact with other people's content. It allows users to upload and delete videos, as well as comments. 
 
 # Technologies Used
 * React / Redux
@@ -28,16 +28,7 @@ The comments section was an interesting challenge that exposed me to the intrica
         }
     }
 ```
-Another challenge along the same lines was that posting a comment after changing pages, would post that comment on the previous page. It's the same issue here where the parent component re-rendered, but the comment form hadn't yet. So I used the following code to have the comment form update it's state with the proper video foreign key.
-```
-    currentUserAndVideoCheck(){
-        if (!this.props.currentUserId) {
-            this.props.history.push('/login')
-        } else {
-            this.setState({video_id: this.props.videoId}) 
-        }
-    }
-```
+
 I learned React Hooks, which made it easier to enable editing of comments through the useState hook to either display a comment, or the edit form of that comment. I passed down the method that changes the slice of state of the useState hook as a prop to the edit form component. That way, the separate edit form component can simply call this method to re-render into displaying the comment.
 ```
   const [editMode, setEditMode] = useState(false)
