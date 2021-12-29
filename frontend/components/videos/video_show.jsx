@@ -29,7 +29,7 @@ class VideoShow extends React.Component {
             <div className="show-video-wrapper">
               <div className='show-video'>
                 <ReactPlayer
-                  url={video.video}
+                  url={video.video} // model association through AWS
                   height='100%'
                   width='100%'
                   muted={false}
@@ -43,7 +43,7 @@ class VideoShow extends React.Component {
                 <div className="show-title">{video.title}</div>
                 <div className="views-bar">
                   <div className="show-views">326,377 views • {createdAt.toLocaleDateString("en-US", {month: 'short', day: 'numeric', year: 'numeric'})}</div>
-                    <VideoLikesContainer video={video}/>
+                  <VideoLikesContainer video={video}/>
                 </div>
                 <div className="show-channel">
                   <div className="av-and-channel">

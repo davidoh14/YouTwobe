@@ -2,6 +2,7 @@ import React from "react";
 import NavBarContainer from "../nav/nav_bar_container";
 import { Button } from "@mui/material";
 import { TextField } from "@mui/material";
+import { CircularProgress } from "@mui/material";
 
 class VideoUploadForm extends React.Component {
   constructor(props) {
@@ -15,11 +16,13 @@ class VideoUploadForm extends React.Component {
       thumbnailUrl: "",
       videoErrors: "",
       thumbnailErrors: "",
+      loading: false
     }),
     this.update = this.update.bind(this);
     this.uploadVideo = this.uploadVideo.bind(this);
     this.uploadThumbnail = this.uploadThumbnail.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.submitOrLoading = this.submitOrLoading.bind(this);
   }
 
   update(field) {
@@ -38,7 +41,7 @@ class VideoUploadForm extends React.Component {
     fileReader.onloadend = () => {
       this.setState({ video: file, videoUrl: fileReader.result });
 
-      if (file.size > 26214400) {
+      if (file.size > 25000000) {
         this.setState({
           videoErrors: "Please attach a video that is less than 25MB."
         });
@@ -48,7 +51,6 @@ class VideoUploadForm extends React.Component {
         })
       }
     };
-
 
     if (file) {
       fileReader.readAsDataURL(file);
@@ -103,10 +105,29 @@ class VideoUploadForm extends React.Component {
     formData.append("video[video]", this.state.video);
     formData.append("video[thumbnail]", this.state.thumbnail);
 
-    this.props.createVideo(formData).then(video => this.props.history.push('/'),
+    this.setState({ loading: true })
+
+    this.props.createVideo(formData).then(
+      (video) => this.props.history.push('/'),
+      (errors) => this.setState({ loading: false })
     );
   }
 
+  submitOrLoading() {
+    if (this.state.loading === false) {
+      return (
+        <Button variant="contained" onClick={this.handleSubmit}>
+          Upload Video
+        </Button>
+      );
+    } else {
+      return <CircularProgress/>;
+    }
+  }
+
+  componentWillUnmount(){
+    this.props.clearVideoErrors()
+  }
 
   render() {
     const preview = this.state.thumbnailUrl ? (
@@ -175,9 +196,7 @@ class VideoUploadForm extends React.Component {
               {this.state.videoErrors}
               {this.state.thumbnailErrors}
             </div>
-            <Button variant="contained" onClick={this.handleSubmit}>
-              Upload Video
-            </Button>
+            {this.submitOrLoading()}
           </div>
         </div>
       </div>
