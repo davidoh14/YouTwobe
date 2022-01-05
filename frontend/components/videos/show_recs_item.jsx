@@ -22,13 +22,18 @@ class ShowRecsItem extends React.Component {
 
     switch(true) {
       case (rawDate < 3600000): // less than an hour
+        if (
+          `${Math.round(rawDate / (1000 * 60))} minute(s) ago` ===
+          "0 minute(s) ago"
+        )
+          return "Just now";
         return `${Math.round((rawDate/(1000 * 60)))} minute(s) ago`;
       case (rawDate >= 3600000 && rawDate < 86400000): // less than a day
         return `${Math.floor(rawDate / (1000 * 60 * 60))} hour(s) ago`; 
       case (rawDate >= 86400000 && rawDate < 604800000): // less than a week
         return `${Math.floor(rawDate / (1000 * 60 * 60 * 24))} day(s) ago`;
       case (rawDate >= 604800000 && rawDate < 2419200000): // less than a month
-        return `${Math.floor(rawDate / (1000 * 60 * 60 * 24 * 7))} weeks(s) ago`;
+        return `${Math.floor(rawDate / (1000 * 60 * 60 * 24 * 7))} week(s) ago`;
       case (rawDate >= 2419200000): // months
         return `${Math.floor(rawDate / (1000 * 60 * 60 * 24 * 7 * 4))} month(s) ago`;
     }
