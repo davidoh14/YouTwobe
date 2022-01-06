@@ -10,6 +10,8 @@ class CommentEditForm extends React.Component {
         ...this.props.commentToEdit
     }
 
+    this.ogBody = this.state.body
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
     this.update = this.update.bind(this);
@@ -60,7 +62,7 @@ class CommentEditForm extends React.Component {
                   CANCEL
                 </Button>
                 
-                {this.state.body === "" ? (
+                {(this.state.body === "") || (this.state.body === this.ogBody) ? (
                   <Button
                     sx={{
                       backgroundColor: "grey",
