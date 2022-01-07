@@ -92,7 +92,7 @@ function VideoUploadForm({ currentUser, videos, errors, createVideo, clearVideoE
 
   function handleSubmit(e) {
     e.preventDefault();
- 
+
 
     const formData = new FormData();
     formData.append("video[title]", title);
