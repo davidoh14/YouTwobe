@@ -52,22 +52,31 @@ export const Search = ({ videos, fetchVideos, history }) => {
             finalResults.push(video)
           }})
       })
+
       setFilteredVideos(() => [...finalResults]);   
   }
 
   if (filteredVideos === []) {
-    return null;
-  } else {
+    return (
+      <div>There are no videos.</div>
+    )
+  }
     return (
       <div className="search-wrapper">
+        {console.log('filteredVids', filteredVideos)}
         <div className="nav-bar-div"></div>
-        {filteredVideos.map(video =>
-          <div key={video.id}>
-            <VideoRowContainer video={video}/>
-          </div> 
-        )}
+          {
+            filteredVideos.length === 0 ?
+              <div className="no-results">
+                There are no videos related to those search terms.
+              </div>
+            :
+              filteredVideos.map(video =>
+                <div key={video.id}>
+                  <VideoRowContainer video={video}/>
+                </div>)
+          }
         <NavBarContainer inheritedSearchTerm={searchTerm}></NavBarContainer>
       </div>
     );
-  }
 };
