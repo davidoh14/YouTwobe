@@ -1,11 +1,16 @@
 .item {
     margin-bottom: 20px;
-    width: 300px;
+    width: 18vw;
     cursor: pointer;
+
+    .thumbnail-wrapper{
+        width: 18vw;
+        height: calc((18vw* 202) / 360);
+    }
     
     .item-thumbnail {
-        height: 180px;
-        width: 300px;
+        height: auto;
+        width: 100%;
     }
 
     .item-info {
@@ -37,5 +42,27 @@
     .item-delete {
         display: flex;
         justify-self: start;
+    }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 2000px) {
+    .item {
+        width: 22vw;
+
+        .thumbnail-wrapper{
+            width: 22vw;
+            height: calc((22vw* 202) / 360);
+        }
+    }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 1140px) {
+    .item {
+        width: 29vw;
+
+        .thumbnail-wrapper{
+            width: 29vw;
+            height: calc((29vw* 202) / 360);
+        }
     }
 }

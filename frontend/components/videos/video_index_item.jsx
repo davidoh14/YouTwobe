@@ -44,11 +44,13 @@ class VideoIndexItem extends React.Component {
 
     return (
       <div className="item">
-        <img
-          className="item-thumbnail"
-          src={video.thumbnail}
-          onClick={this.watchVideo}
-        />
+        <div className="thumbnail-wrapper">
+          <img
+            className="item-thumbnail"
+            src={video.thumbnail}
+            onClick={this.watchVideo}
+          />
+        </div>
         <div className="item-info">
           <div className="item-avatar">
             <ColorAvatar username={video.username}/>
