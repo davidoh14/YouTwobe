@@ -63,7 +63,6 @@ export const Search = ({ videos, fetchVideos, history }) => {
   }
     return (
       <div className="search-wrapper">
-        {console.log('filteredVids', filteredVideos)}
         <div className="nav-bar-div"></div>
           {
             filteredVideos.length === 0 ?

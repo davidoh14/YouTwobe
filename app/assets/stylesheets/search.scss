@@ -3,14 +3,16 @@
 }
 
 .search-wrapper {
-    width: 80vw;
     display: flex;
+    max-width: 1096px;
+    align-items: center;
     flex-direction: column;
 }
 
 .vid-row {
     display: flex;
     margin-top: 20px;
+
 
     .thumbnail-wrapper {
         width: 360px;
@@ -59,6 +61,7 @@
         .description {
             color: rgb(165, 165, 165);
             font-size: 14px;
+            width: 721px;
         }
     }
 }
