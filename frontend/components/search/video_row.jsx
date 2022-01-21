@@ -1,5 +1,6 @@
 import React from "react";
 import { Avatar } from "@mui/material";
+import ColorAvatar from "../avatar/color_avatar";
 
 
 function VideoRow({ video, history }) {
@@ -15,12 +16,12 @@ function VideoRow({ video, history }) {
           <div className="title">{video.title}</div>
           <div className="views-and-date">9.1M views • 1 year ago </div>
           <div className="avatar-and-username">
-            <Avatar className="avatar"
+            <ColorAvatar className="Color"
                 sx={{
                     width: "30px",
                     height: "30px",
                 }}
-            ></Avatar>
+            ></ColorAvatar>
             <div className="username">{video.username}</div>
           </div>
           <div className="description">{video.description}</div>
