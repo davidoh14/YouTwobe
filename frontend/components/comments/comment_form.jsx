@@ -1,51 +1,59 @@
 import React from "react";
 import { Button, TextField } from "@mui/material";
 import { Avatar } from "@mui/material";
+import { useState } from "react";
 
-class CommentForm extends React.Component {
-  constructor(props) {
-    super(props);
+const CommentForm = ({ composeComment, videoId, currentUserId, history }) => {
 
-    this.state = {
-      body: "",
-      video_id: this.props.videoId,
-      commentButtons: false,
-    };
+  const [body, setBody] = useState("");
+  const [commentButtons, setCommentButtons] = useState(false);
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleCancel = this.handleCancel.bind(this);
-    this.currentUserCheck = this.currentUserCheck.bind(this);
-  }
-
-  currentUserCheck() {
-    if (!this.props.currentUserId) {
-      this.props.history.push("/login");
+  function currentUserCheck() {
+    if (!currentUserId) {
+      history.push("/login");
     }
   }
+  
+  function handleSubmit(e) {
+    e.preventDefault();
 
-  toggleCommentButtons() {
-    this.setState({ commentButtons: true })
+    composeComment(
+      {
+        body: body,
+        commentButtons: commentButtons,
+        video_id: videoId,
+        commenter_id: currentUserId
+      }
+    )
+      .then(() => {
+        setBody("");
+        setCommentButtons(false);
+      });
+  }
+  
+  function handleCancel(e) {    
+    setBody("");
+    setCommentButtons(false);
   }
 
-  showCommentButtons() {
-    return (
+  function showCommentButtons() {
+    return commentButtons ? (
       <div className="comment-buttons">
         <Button
           sx={{
             color: "grey",
           }}
-          onClick={this.handleCancel}
+          onClick={handleCancel}
         >
           CANCEL
         </Button>
-        
-        {this.state.body === "" ? (
+
+        {body === "" ? (
           <Button
             sx={{
               backgroundColor: "grey",
             }}
             variant="contained"
-            onClick={this.handleSubmit}
             disabled
           >
             COMMENT
@@ -56,44 +64,18 @@ class CommentForm extends React.Component {
               backgroundColor: "grey",
             }}
             variant="contained"
-            onClick={this.handleSubmit}
+            onClick={(e) => handleSubmit(e)}
           >
             COMMENT
           </Button>
         )}
       </div>
-    );
+    ) : null;
   }
-  
-  update(field) {
-    return (e) => {
-      this.setState({ [field]: e.currentTarget.value });
-    };
-  }
-  
-  handleSubmit(e) {
-    e.preventDefault();
 
-    this.props
-      .composeComment(this.state)
-      .then(() => this.setState({ 
-        body: "", 
-        commentButtons: false
-    }));
-  }
-  
-  handleCancel(e) {
-    e.preventDefault();
-    
-    this.setState({
-      body: "",
-      commentButtons: false,
-    });
-  }
-  
-  render() {
+
     return (
-      <div onClick={this.currentUserCheck}>
+      <div onClick={() => currentUserCheck()}>
         <div className="add-comment">
           <Avatar className="comment-avatar" />
           <div className="comment-form-and-buttons">
@@ -102,19 +84,19 @@ class CommentForm extends React.Component {
                 <input
                   type="text"
                   className="comment-input"
-                  value={this.state.body}
+                  value={body}
                   placeholder={"Add a public comment..."}
-                  onChange={this.update("body")}
-                  onClick={() => this.toggleCommentButtons()}
+                  onChange={(e) => setBody(e.target.value)}
+                  onClick={() => setCommentButtons(true)}
                 />
               </label>
-              {this.state.commentButtons ? this.showCommentButtons() : null}
+              {showCommentButtons()}
             </form>
           </div>
         </div>
       </div>
     );
-  }
+
 }
 
 export default CommentForm;
