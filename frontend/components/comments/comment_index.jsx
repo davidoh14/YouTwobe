@@ -1,30 +1,29 @@
 import CommentItem from "./comment_item";
 import CommentForm from "./comment_form";
-import React from "react";
+import React, { useEffect } from "react";
 
-class CommentIndex extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+const CommentIndex = ({ 
+  fetchAllComments, 
+  comments, 
+  videoId, 
+  composeComment, 
+  reviseComment, 
+  currentUserId, 
+  eraseComment, 
+  history }) => {
 
-  componentDidMount() {
-    this.props.fetchAllComments(this.props.videoId);
-  }
+  useEffect(() => {
+      fetchAllComments(videoId)
+  }, [videoId])
 
-  componentDidUpdate(prevProps) {
-    if (this.props.videoId !== prevProps.videoId) {
-      this.props.fetchAllComments(this.props.videoId);
-    }
-  }
-
-  // Without this componentDidUpdate, the current comment index will appear on the index of subsequent 
-  // This is because the comment index of any subsequent-loaded videos will still be the same component that was previously loaded.
-  // A new fetch request must be performed in order to re-render with the video's respective comments. 
-
-  sortAndMapComments(){
-    sortedComments = comments.sort(function(a, b) {
-      return a.createdAt - b.createdAt
-    })
+  useEffect(() => {
+      sortAndMapComments()
+  })
+  
+  function sortAndMapComments() {
+    let sortedComments = comments.sort(function (a, b) {
+      return a.createdAt - b.createdAt;
+    });
 
     sortedComments.map((comment) => (
       <li key={comment.id}>
@@ -38,9 +37,6 @@ class CommentIndex extends React.Component {
     ));
   }
 
-  render() {
-    const { comments, videoId, composeComment, reviseComment, currentUserId, eraseComment } = this.props;
-
     if (comments) {
       if (comments.length === 0) {
         return (
@@ -51,7 +47,7 @@ class CommentIndex extends React.Component {
                 composeComment={composeComment}
                 videoId={videoId}
                 currentUserId={currentUserId}
-                history={this.props.history}
+                history={history}
               />
             </div>
           </div>
@@ -66,7 +62,7 @@ class CommentIndex extends React.Component {
               composeComment={composeComment}
               videoId={videoId}
               currentUserId={currentUserId}
-              history={this.props.history}
+              history={history}
             />
           </div>
 
@@ -94,7 +90,6 @@ class CommentIndex extends React.Component {
           </ul>
         </div>
       );
-    }
   }
 }
 
