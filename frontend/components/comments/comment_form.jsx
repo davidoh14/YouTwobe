@@ -1,12 +1,17 @@
 import React from "react";
 import { Button, TextField } from "@mui/material";
 import { Avatar } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const CommentForm = ({ composeComment, videoId, currentUserId, history }) => {
 
   const [body, setBody] = useState("");
   const [commentButtons, setCommentButtons] = useState(false);
+
+  useEffect(() => {
+    setBody("")
+    setCommentButtons(false)
+  }, [videoId])
 
   function currentUserCheck() {
     if (!currentUserId) {
