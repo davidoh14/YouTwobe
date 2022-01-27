@@ -25,14 +25,6 @@ class ShowRecs extends React.Component {
               />
             </div>
           ))}
-          {videos.map((video) => (
-            <div className="video-index-item2" key={video.id}>
-              <ShowRecsItemContainer
-                video={video}
-                history={this.props.history}
-              />
-            </div>
-          ))}
         </div>
         <div className="index-right2" />
       </div>
