@@ -30,7 +30,6 @@ class Api::CommentsController < ApplicationController
     def update
         @comment = Comment.find_by(id: params[:id])
         
-        
         if @comment.update(comment_params)
             render :show
         else

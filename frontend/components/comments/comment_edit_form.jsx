@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, TextField } from "@mui/material";
 import { Avatar } from "@mui/material";
+import ColorAvatar from "../avatar/color_avatar";
 
 class CommentEditForm extends React.Component {
   constructor(props) {
@@ -39,7 +40,7 @@ class CommentEditForm extends React.Component {
     return (
       <div>
         <div className="add-comment">
-          <Avatar className="comment-avatar" />
+          <ColorAvatar username={this.props.username} />
           <div className="comment-form-and-buttons">
             <form className="comment-form">
               <label>

@@ -15,7 +15,6 @@ class Api::VideosController < ApplicationController
     end
 
     def create
-
         @video = Video.new(video_params)
 
         if @video.save 
@@ -45,5 +44,3 @@ class Api::VideosController < ApplicationController
     end
 end
 
-
-# before_action: create, edit, edit, require_logged_in

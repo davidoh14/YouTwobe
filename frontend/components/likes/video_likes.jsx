@@ -6,23 +6,33 @@ import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 
 
-function VideoLikes({ video, likes, history, currentUserId, fetchLike, fetchLikes, createLike, updateLike, deleteLike }) {
+function VideoLikes({ video, likes, history, currentUserId, fetchLikes, createLike, updateLike, deleteLike }) {
 
     const [currentLike, setCurrentLike] = useState([]);
     const [likeCount, setLikeCount] = useState(0);
     const [dislikeCount, setDislikeCount] = useState(0);
 
-    const mounted = useRef();
+    // const mounted = useRef();
     
+    // useEffect(() => {
+    //     if (!mounted.current) {
+    //         fetchLikes();
+    //         mounted.current = true;
+    //     } else {
+    //         findCurrentLike();
+    //         likeHandler();
+    //         filterLikesDislikes();
+    //     } 
+    // }, [likes]);
+
     useEffect(() => {
-        if (!mounted.current) {
-            fetchLikes();
-            mounted.current = true;
-        } else {
-            findCurrentLike();
-            likeHandler();
-            filterLikesDislikes();
-        } 
+        fetchLikes() 
+    }, [])
+
+    useEffect(() => {
+      findCurrentLike();
+      likeHandler();
+      filterLikesDislikes();
     }, [likes]);
     
     let like;

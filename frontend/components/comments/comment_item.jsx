@@ -68,6 +68,7 @@ const CommentItem = ({ comment, currentUserId, eraseComment, reviseComment }) =>
           cancelEdit={() => setEditMode(false)}
           currentUserId={currentUserId}
           videoId={comment.videoId}
+          username={comment.user.username}
         />
       );
     }

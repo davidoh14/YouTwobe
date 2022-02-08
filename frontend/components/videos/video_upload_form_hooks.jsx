@@ -93,7 +93,6 @@ function VideoUploadForm({ currentUser, videos, errors, createVideo, clearVideoE
   function handleSubmit(e) {
     e.preventDefault();
 
-
     const formData = new FormData();
     formData.append("video[title]", title);
     formData.append("video[description]", description);
@@ -109,12 +108,9 @@ function VideoUploadForm({ currentUser, videos, errors, createVideo, clearVideoE
     );
   }
   
-
   let preview = thumbnailUrl ? (
     <img src={thumbnailUrl} />
   ) : null;
-
-
 
   return(
       <div>

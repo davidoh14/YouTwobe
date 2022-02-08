@@ -32,6 +32,7 @@ const ColorAvatar = ({ username }) => {
 
     return (
         <div>
+            {console.log(username)}
             <Avatar {...stringAvatar(`${username}`)}/>
         </div>
     )

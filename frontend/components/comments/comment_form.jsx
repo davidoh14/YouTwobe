@@ -79,28 +79,28 @@ const CommentForm = ({ composeComment, videoId, currentUserId, history }) => {
   }
 
 
-    return (
-      <div onClick={() => currentUserCheck()}>
-        <div className="add-comment">
-          <Avatar className="comment-avatar" />
-          <div className="comment-form-and-buttons">
-            <form className="comment-form">
-              <label>
-                <input
-                  type="text"
-                  className="comment-input"
-                  value={body}
-                  placeholder={"Add a public comment..."}
-                  onChange={(e) => setBody(e.target.value)}
-                  onClick={() => setCommentButtons(true)}
-                />
-              </label>
-              {showCommentButtons()}
-            </form>
-          </div>
+  return (
+    <div onClick={() => currentUserCheck()}>
+      <div className="add-comment">
+        <Avatar className="comment-avatar" />
+        <div className="comment-form-and-buttons">
+          <form className="comment-form">
+            <label>
+              <input
+                type="text"
+                className="comment-input"
+                value={body}
+                placeholder={"Add a public comment..."}
+                onChange={(e) => setBody(e.target.value)}
+                onClick={() => setCommentButtons(true)}
+              />
+            </label>
+            {showCommentButtons()}
+          </form>
         </div>
       </div>
-    );
+    </div>
+  );
 
 }
 
