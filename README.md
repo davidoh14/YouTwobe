@@ -1,4 +1,5 @@
 # YouTwobe
+![home](https://user-images.githubusercontent.com/86807281/153285044-3ace8889-a720-44e1-ae53-6ae6e925e6c7.gif)
 
 [Link](https://youtwobe3.herokuapp.com/)
 
@@ -14,6 +15,7 @@ YouTwobe is a video-sharing, social platform that allows anyone to express their
 * Heroku / Git
 
 ## Highlight Features
+![comment](https://user-images.githubusercontent.com/86807281/153285229-07806bd8-1f22-4e12-bfd8-2f06bc06b501.gif)
 
 ## Comments
 The comments section was an interesting challenge that exposed me to the intricacies of the React lifecycles and the considerations you have to make with multiple components on the same screen. I organized the comments under an overarching comments section, with an input form to create a comment as a child component, and an index that renders all comments with a foreign key matching the video's primary key. 
@@ -88,6 +90,10 @@ Displaying/editing of comments was enabled through the useState hook to conditio
     </div>
   );
 ```
+
+![upload](https://user-images.githubusercontent.com/86807281/153285817-a5cc1818-83cf-433f-b953-67d50463fa67.gif)
+
+
 
 ### Video Upload
 Users can upload video and image files via AWS servers. It was interesting to learn the AWS-specific setup that enables the frontend file upload functions below.
