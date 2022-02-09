@@ -16,7 +16,7 @@ function VideoRow({ video, history }) {
           <div className="title">{video.title}</div>
           <div className="views-and-date">9.1M views • 1 year ago </div>
           <div className="avatar-and-username">
-            <ColorAvatar className="Color"
+            <ColorAvatar username={video.username} className="Color"
                 sx={{
                     width: "30px",
                     height: "30px",
